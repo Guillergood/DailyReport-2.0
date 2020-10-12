@@ -13,3 +13,4 @@ Los objetivos principales de esta herramienta son:
 + Ahorrar en costes y tiempo.
 + Permitir la toma de decisiones basadas en la información generada por las informes diarios.
 
+Para desarrollar el proyecto se quiere utilizar *Spring*.
