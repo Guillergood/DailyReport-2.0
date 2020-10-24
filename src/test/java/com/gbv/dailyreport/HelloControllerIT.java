@@ -29,13 +29,13 @@ public class HelloControllerIT {
     }
 
     @Test
-    public void getHello() {
+    public void getHello(){
         ResponseEntity<String> response = template.getForEntity(base.toString(),
                 String.class);
         assertThat(response.getBody()).isEqualTo("Greetings from Spring Boot!");
     }
     @Test
-    public void getRealHello() {
+    public void getRealHello(){
         ResponseEntity<String> response = template.getForEntity(base.toString(),
                 String.class);
         assertThat(response.getBody()).contains("How should the app call you?");
