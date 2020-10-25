@@ -37,8 +37,6 @@ Este servicio tendrá una base de datos encargada de guardar el tipo de animal q
 
 **API:** Redigirá las peticiones REST a su entidad correspondiente.
 
-
-
 Esta arquitectura es una arquitectura **dirigida por eventos**. Se ha elegido este tipo de arquitectura debido al funcionamiento del trabajo de un zoológico, en el que este tipo de arquitectura funcionaría muy bien.
 
 - Los **Animales** generan "estados", que en este casos son **eventos**.
@@ -48,3 +46,7 @@ Esta arquitectura es una arquitectura **dirigida por eventos**. Se ha elegido es
 Para finalizar caso de uso sería:
 
 Los **Animales** generan "estados".  Estos "estados" son informados por los **Cuidadores** que envían la información por el *ApiGateway*, además se marca al **Animal** como **comprobado**. Una vez enviado, el **Agente Burocrático** recoge esta petición para ir rellenando el informe.
+
+Por último se muestra un diagrama de la arquitectura:
+
+![](https://raw.githubusercontent.com/Guillergood/Ejercicios_20-21_CC/main/Images/Proyecto/Arquitectura.png)
