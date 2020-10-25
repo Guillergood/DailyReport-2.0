@@ -16,3 +16,5 @@ Los objetivos principales de esta herramienta son:
 Para desarrollar el proyecto se quiere utilizar *Spring*.
 
 Para ver la arquitectura acceder a la página del [proyecto](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html).
+
+Para acceder al *roadmap* se puede acceder al apartado [projects](https://github.com/Guillergood/DailyReport-2.0/projects/1) del repositorio.
