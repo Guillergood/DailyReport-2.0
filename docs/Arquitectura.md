@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Navigation Structure
+title: Arquitectura
 nav_order: 5
 ---
 
@@ -9,7 +9,7 @@ nav_order: 5
 
 <details open markdown="block">
   <summary>
-    Table of contents
+    Tabla de contenidos
   </summary>
   {: .text-delta }
 1. TOC
