@@ -1,6 +1,21 @@
-# DailyReport
+---
+layout: default
+title: Navigation Structure
+nav_order: 5
+---
 
-### **Arquitectura**:
+# Arquitectura
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
 
 Para definir este programa y ayudar al zoólogico se ha definido los siguientes microservicios:
 
