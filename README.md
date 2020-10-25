@@ -1,6 +1,6 @@
 # DailyReport-2.0
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Language](https://img.shields.io/badge/Language-Java-fd6a02.svg)](https://www.java.com/) [![Framework](https://img.shields.io/badge/Framework-Spring-brightgreen.svg)](https://spring.io/) ![](https://travis-ci.org/Guillergood/DailyReport-2.0.svg?branch=main)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Language](https://img.shields.io/badge/Language-Java-fd6a02.svg)](https://www.java.com/) [![Framework](https://img.shields.io/badge/Framework-Spring-brightgreen.svg)](https://spring.io/) [![Build Status](https://travis-ci.com/Guillergood/DailyReport-2.0.svg?branch=main)](https://travis-ci.com/Guillergood/DailyReport-2.0)
 
 DailyReport-2.0 surje de la necesidad de actualizar un proyecto de voluntariado que realizé para el zoo de Dublín en 2019, *DailyReport* (actualmente se está trabajando para poder ponerlo en un repositorio público).
 
