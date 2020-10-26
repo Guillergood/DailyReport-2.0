@@ -1,0 +1,2 @@
+entidad:
+  - src/main/java/com/gbv/dailyreport/model/Cuidador.java
