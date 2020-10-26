@@ -17,4 +17,4 @@ Para desarrollar el proyecto se quiere utilizar *Spring*.
 
 Para ver la arquitectura, accede a la página del [proyecto](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html).
 
-Para ver el *roadmap*, accede al apartado [projects](https://github.com/Guillergood/DailyReport-2.0/projects/1) del repositorio.
+Para ver el *roadmap*, accede al apartado [projects](https://github.com/Guillergood/DailyReport-2.0/projects/1) y a la [gráfica](https://guillergood.github.io/DailyReport-2.0/docs/Roadmap.html) de la página del repositorio.
