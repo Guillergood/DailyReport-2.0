@@ -32,9 +32,14 @@ Para cola de eventos se usará RabbitMQ, debido a que permite solucionar el prob
 =====================================================================================
 
 Historias de Usuario
-https://github.com/Guillergood/DailyReport-2.0/issues/10
-https://github.com/Guillergood/DailyReport-2.0/issues/11
-https://github.com/Guillergood/DailyReport-2.0/issues/12
-https://github.com/Guillergood/DailyReport-2.0/issues/13
-https://github.com/Guillergood/DailyReport-2.0/issues/14
-https://github.com/Guillergood/DailyReport-2.0/issues/15
+[HU1](https://github.com/Guillergood/DailyReport-2.0/issues/10)
+
+[HU2](https://github.com/Guillergood/DailyReport-2.0/issues/11)
+
+[HU3](https://github.com/Guillergood/DailyReport-2.0/issues/12)
+
+[HU4](https://github.com/Guillergood/DailyReport-2.0/issues/13)
+
+[HU5](https://github.com/Guillergood/DailyReport-2.0/issues/14)
+
+[HU6](https://github.com/Guillergood/DailyReport-2.0/issues/15)
