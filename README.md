@@ -28,3 +28,13 @@ Para las bases de datos se utlizará MongoDB. La razón de esto es por la posibl
 
 Para cola de eventos se usará RabbitMQ, debido a que permite solucionar el problema de eventos y al no tener una gran carga de datos, permitiría mandar mensajes entre los microservicios rápidamente.
 
+
+=====================================================================================
+
+Historias de Usuario
+https://github.com/Guillergood/DailyReport-2.0/issues/10
+https://github.com/Guillergood/DailyReport-2.0/issues/11
+https://github.com/Guillergood/DailyReport-2.0/issues/12
+https://github.com/Guillergood/DailyReport-2.0/issues/13
+https://github.com/Guillergood/DailyReport-2.0/issues/14
+https://github.com/Guillergood/DailyReport-2.0/issues/15
