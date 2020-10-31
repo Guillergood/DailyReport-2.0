@@ -37,9 +37,9 @@ Las historias de usuario que describen este proyecto se muestran a continuación
 
 [Como Cuidador, necesito poder hacer reportes de otros días para poder cubrir días donde el sistema ha fallado.](https://github.com/Guillergood/DailyReport-2.0/issues/17)
 
-[Como Cuidador del zoólogico me gustaría reportar sobre los animales para poder añadir información al informe final.](https://github.com/Guillergood/DailyReport-2.0/issues/10)
+[Como Cuidador del zoológico me gustaría reportar sobre los animales para poder añadir información al informe final.](https://github.com/Guillergood/DailyReport-2.0/issues/10)
 
-[Como administrador del zóologico quiero poder tener en el correo el informe generado para saber que se ha generado el reporte final y sea más cómodo leer.](https://github.com/Guillergood/DailyReport-2.0/issues/15)
+[Como administrador del zoológico quiero poder tener en el correo el informe generado para saber que se ha generado el reporte final y sea más cómodo leer.](https://github.com/Guillergood/DailyReport-2.0/issues/15)
 
 # **Entidades:**
 
@@ -91,3 +91,7 @@ Investigar cómo desplegar el proyecto en Alibaba
 [**Investigación de posibles mejoras:**](https://github.com/Guillergood/DailyReport-2.0/milestone/10)
 
 Investigar sobre Spring Cloud
+
+# **Clases:**
+Se ha creado el esqueleto del modelo [*Cuidador*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/main/java/com/gbv/dailyreport/model/Cuidador.java).
+El cual pasa el test en [TravisCI](https://travis-ci.org/github/Guillergood/DailyReport-2.0/builds/740404090)
