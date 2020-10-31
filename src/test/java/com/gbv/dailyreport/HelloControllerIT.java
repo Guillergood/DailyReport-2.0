@@ -32,7 +32,7 @@ public class HelloControllerIT {
     public void getHello(){
         ResponseEntity<String> response = template.getForEntity(base.toString(),
                 String.class);
-        assertThat(response.getBody()).isEqualTo("Greetings from Spring Boot!");
+        assertThat(response.getBody()).contains("Greetings from Spring Boot!");
     }
     @Test
     public void getRealHello(){
