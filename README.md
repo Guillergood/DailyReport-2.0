@@ -55,7 +55,7 @@ Las entidades que se van a utilizar en este proyecto son:
 
 # **Planificación del proyecto:**
 
-El proyecto se va a dividir en los siguientes hitos:
+El proyecto se va a dividir en los siguientes objetivos:
 
 **[Cuidador](https://github.com/Guillergood/DailyReport-2.0/milestone/5):**
 
