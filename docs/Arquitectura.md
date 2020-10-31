@@ -11,7 +11,7 @@ Para definir este programa y ayudar al zoológico se ha definido los siguientes 
 1. Cuidador
 2. Animal
 3. Agente Burocrático
-4. API
+4. APIGateway
 
 **Cuidador:** Esta entidad será usada para reportar sobre los animales. El formato del envío de la información será en JSON. El Agente Burocrático será el encargado de recibir los reportes. Toda esta información será almacenada en una base de datos.
 
@@ -24,9 +24,9 @@ Este servicio tendrá una base de datos encargada de guardar el tipo de animal q
 
 **Agente Burocrático:** El objetivo de este servicio es **recopilar información** de los informes de los **Cuidadores**. Posteriormente este servicio podrá generar un informe final en formato pdf.
 
-**API:** Redirigirá las peticiones REST a su entidad correspondiente.
+**APIGateway:** Redirigirá las peticiones REST a su entidad correspondiente.
 
-Esta arquitectura es una arquitectura de **microservicios**. Se ha elegido este tipo de arquitectura debido al funcionamiento del trabajo de un zoológico, en el que este tipo de arquitectura funcionaría muy bien.
+La arquitectura en la que se apoya el proyecto es una basada en **microservicios**. Se ha elegido este tipo de arquitectura debido al funcionamiento del trabajo de un zoológico, en el que este tipo de arquitectura funcionaría muy bien. Además, permitiría una futura integración de nuevas funcionalidades sin mucho esfuerzo.
 
 - Los **Animales** generan datos, debido al estado real del animal (enfermedades, carácter... etc) .
 - Los **Cuidadores** se encargarían de comunicar y añadir información extra sobre el estado del animal.
