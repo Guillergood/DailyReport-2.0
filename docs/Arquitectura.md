@@ -6,6 +6,9 @@ nav_order: 5
 
 # Arquitectura
 
+La arquitectura en la que se apoya el proyecto es una basada en **microservicios**. Se ha elegido este tipo de arquitectura debido al funcionamiento del trabajo de un zoológico, en el que este tipo de arquitectura funcionaría muy bien. Hay un buen número de tareas que podrían ser automatizadas, dónde la mayoría de las veces las transacciones que se hacen son datos mínimos o de poco tamaño. Además, permitiría una futura integración de nuevas funcionalidades sin mucho esfuerzo. La rapidez de una arquitectura de este tipo es rápida puesto que, los módulos que la contienen suelen tener un pequeño tamaño, aunque por otra parte se necesitaría más recursos. Una última ventaja de esta arquitectura sería el mantenimiento, permitiría mantenerse simple y barato ya que los cambios serían con respecto a módulos, no al sistema entero.
+
+
 Para definir este programa y ayudar al zoológico se ha definido los siguientes microservicios:
 
 1. Cuidador
@@ -13,25 +16,7 @@ Para definir este programa y ayudar al zoológico se ha definido los siguientes 
 3. Agente Burocrático
 4. APIGateway
 
-**Cuidador:** Esta entidad será usada para reportar sobre los animales. El formato del envío de la información será en JSON. El Agente Burocrático será el encargado de recibir los reportes. Toda esta información será almacenada en una base de datos.
+El hecho de utilizar un API REST es por la versatilidad y gran uso hay en sistemas web, unido a la facilidad de aprovechamiento.
+Su funcionalidad se asemejaría a la vida real. Dónde un "Cuidador" reporta sobre un "Animal" a un "Agente Burocrático". El "Agente Burocrático" se encarga de realizar un informe diario con los demás aportes de los otros "Cuidadores". Por último, el "Agente Burocrático" se encarga de enviar a las partes interesadas el informe final.
+Este proceso se está llevando a cabo actualmente en algunos zoológicos, apenas usando algunos dispositivos informáticos para algunas tareas.
 
-**Animal:** Esta entidad será usada para:
-
-   -		**Generar** **estados** diario del animal.
-   -		**Informar** con anotaciones más extensas sobre su estado.
-
-Este servicio tendrá una base de datos encargada de guardar el tipo de animal que es.
-
-**Agente Burocrático:** El objetivo de este servicio es **recopilar información** de los informes de los **Cuidadores**. Posteriormente este servicio podrá generar un informe final en formato pdf.
-
-**APIGateway:** Redirigirá las peticiones REST a su entidad correspondiente.
-
-La arquitectura en la que se apoya el proyecto es una basada en **microservicios**. Se ha elegido este tipo de arquitectura debido al funcionamiento del trabajo de un zoológico, en el que este tipo de arquitectura funcionaría muy bien. Además, permitiría una futura integración de nuevas funcionalidades sin mucho esfuerzo.
-
-- Los **Animales** generan datos, debido al estado real del animal (enfermedades, carácter... etc) .
-- Los **Cuidadores** se encargarían de comunicar y añadir información extra sobre el estado del animal.
-- El **Agente Burocrático** captaría esos reportes y generar un informe con toda la información contada por los **Cuidadores**.
-
-Para finalizar caso de uso sería:
-
-Los **Animales** generan "estados".  Estos "estados" son informados por los **Cuidadores** que envían la información por el *ApiGateway*, además se marca al **Animal** como **comprobado**. Una vez enviado, el **Agente Burocrático** recoge esta petición para ir rellenando el informe.
