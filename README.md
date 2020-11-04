@@ -17,13 +17,6 @@ Para desarrollar el proyecto se quiere utilizar *Spring*.
 
 Para ver la arquitectura, accede a la página del [proyecto](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html).
 
-Las tecnologías a usar son:
-Para la creación de microservicios se usará Java y el framework Spring Boot y Spring Cloud.
-
-Se ha elegido Java por mi conocimiento sobre él y la cantidad de tiempo dedicado en utilizarlo. Además de ser usado por un comunidad muy grande, el framework Spring Boot y Cloud estás desarrollado en este lenguaje. Estos dos últimos se han escogido para desarrollar el proyecto porque permite facilitar el desarrollo completo (Test Unitarios, integración, manejo de mensajes...).
-
-Para las bases de datos se utilizará MongoDB. La razón de esto es por la posible escalabilidad en el futuro de la aplicación, además de permitir el desarrollo más rápido.
-
 
 # Historias de usuario:
 
