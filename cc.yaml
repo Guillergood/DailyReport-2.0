@@ -1,2 +1,14 @@
 entidad:
-  - src/main/java/com/gbv/dailyreport/model/Cuidador.java
+  - Animal/Animal.java
+  - Animal/AnimalApplication.java
+  - Animal/AnimalController.java
+  - Animal/AnimalRepository.java
+  - Burocratico/Report.java
+  - Burocratico/BurocraticoApplication.java
+  - Burocratico/BurocraticoController.java
+  - Burocratico/ReportRepository.java
+  - Cuidador/Cuidador.java
+  - Cuidador/CuidadorApplication.java
+  - Cuidador/CuidadorController.java
+  - Cuidador/CuidadorRepository.java
+  - API/ApiApplication.java
