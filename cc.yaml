@@ -1,15 +1,9 @@
-entidad:
-  - Animal/Animal.java
-  - Animal/AnimalApplication.java
-  - Animal/AnimalController.java
-  - Animal/AnimalRepository.java
-  - Burocratico/Report.java
-  - Burocratico/BurocraticoApplication.java
-  - Burocratico/BurocraticoController.java
-  - Burocratico/ReportRepository.java
-  - Cuidador/Cuidador.java
-  - Cuidador/CuidadorApplication.java
-  - Cuidador/CuidadorController.java
-  - Cuidador/CuidadorRepository.java
-  - API/ApiApplication.java
-  
+lenguaje:
+  - java
+test:
+  - /src/Animal/src/test/java/com/gbv/dailyreport/animal/AnimalApplicationTests.java
+  - /src/Burocratico/src/test/java/com/gbv/dailyreport/burocratico/BurocraticoApplicationTests.java
+  - /src/Cuidador/src/test/java/com/gbv/dailyreport/cuidador/CuidadorApplicationTests.java
+  - /src/API/src/test/java/com/gbv/dailyreport/api/ApiApplicationTests.java
+fichero_tareas:
+  - Makefile
