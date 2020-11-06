@@ -62,16 +62,29 @@ Investigar sobre Spring Cloud
 
 # **Clases:**
 Se ha creado el esqueleto de las siguientes clases:
+
   [*Animal*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Animal/Animal.java)
+  
   [*AnimalApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Animal/AnimalApplication.java)
+  
   [*AnimalController*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Animal/AnimalController.java)
+  
   [*AnimalRepository*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Animal/AnimalRepository.java)
+  
   [*Report*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Burocratico/Report.java)
+  
   [*BurocraticoApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Burocratico/BurocraticoApplication.java)
+  
   [*BurocraticoController*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Burocratico/BurocraticoController.java)
+  
   [*ReportRepository*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Burocratico/ReportRepository.java)
+  
   [*Cuidador*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Cuidador/Cuidador.java)
+  
   [*CuidadorApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Cuidador/CuidadorApplication.java)
+  
   [*CuidadorController*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Cuidador/CuidadorController.java)
+  
   [*CuidadorRepository*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Cuidador/CuidadorRepository.java)
+  
   [*ApiApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/API/ApiApplication.java)
