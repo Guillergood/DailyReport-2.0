@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - oraclejdk15
+  - openjdk8
 script:
   # Script para que ejecute los test con la regla por defecto
   - make

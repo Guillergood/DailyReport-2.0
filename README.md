@@ -17,4 +17,9 @@ Los objetivos principales de esta herramienta son:
 
 # [**2.Planificación y descripción**](https://guillergood.github.io/DailyReport-2.0/docs/Planificacion.html)
 
+# [**3.Elección y justificación de tecnologías**](https://guillergood.github.io/DailyReport-2.0/docs/Tecnologias.html)
+
+Además para la justificación de corrección del hito se han hecho los [ejercicios](https://github.com/Guillergood/Ejercicios_20-21_CC/blob/main/Ejercicios%20Tema%202/Ejercicios.md)
+
+
 
