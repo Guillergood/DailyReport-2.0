@@ -1,6 +1,7 @@
 language: java
+dist: xenial
 jdk:
-  - openjdk8
+  - openjdk11
 script:
   # Script para que ejecute los test con la regla por defecto
   - make
