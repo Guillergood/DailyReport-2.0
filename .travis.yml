@@ -1,9 +1,6 @@
 language: java
 jdk:
-  - openjdk11
-  - openjdk14
-  - oraclejava11
-  - oraclejava14
+  - openjdk8
 script:
   # Script para que ejecute los test con la regla por defecto
   - make
