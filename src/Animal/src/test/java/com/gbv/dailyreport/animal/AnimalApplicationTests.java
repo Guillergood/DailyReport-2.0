@@ -4,12 +4,18 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -21,6 +27,9 @@ import java.util.Objects;
     Se le da la opcion de que escoja un puerto aleatorio para que no coincida con otro proceso
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@TestPropertySource("/application.properties")
+@Configuration
+@ComponentScan
 public class AnimalApplicationTests {
     //Variable autoconfigurada de puerto
     @LocalServerPort
@@ -29,6 +38,9 @@ public class AnimalApplicationTests {
     //Variable de URI que se va a tomar como base para el test
     private URI base;
 
+    @Value("${server.host}")
+    private String host;
+
     //Variable autoconfigurada para hacer peticiones REST
     @Autowired
     private TestRestTemplate template;
@@ -36,7 +48,7 @@ public class AnimalApplicationTests {
     //Metodo para configurar anteriormente los test
     @BeforeEach
     public void setUp() throws Exception {
-        this.base = new URI("http://localhost:" + port + "/dailyreport/animal");
+        this.base = new URI(host + port + "/dailyreport/animal");
     }
 
     //Metodo para añadir un animal a la colecccion
@@ -59,7 +71,7 @@ public class AnimalApplicationTests {
     @Test
     public void getAnimal() throws URISyntaxException {
         addAnimal();
-        URI uri = new URI("http://localhost:" + port + "/dailyreport/animal/40");
+        URI uri = new URI(host + port + "/dailyreport/animal/40");
 
 
         ResponseEntity<String> result = this.template.getForEntity(uri, String.class);
@@ -72,7 +84,7 @@ public class AnimalApplicationTests {
     @Test
     public void deleteAnimal() throws URISyntaxException {
         addAnimal();
-        URI uri = new URI("http://localhost:" + port + "/dailyreport/animal/40");
+        URI uri = new URI(host + port + "/dailyreport/animal/40");
 
 
         this.template.delete(uri);

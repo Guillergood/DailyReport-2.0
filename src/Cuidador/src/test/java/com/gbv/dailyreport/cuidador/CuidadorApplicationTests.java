@@ -4,12 +4,16 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.TestPropertySource;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -20,6 +24,9 @@ import java.util.Objects;
 */
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@TestPropertySource("/application.properties")
+@Configuration
+@ComponentScan
 public class CuidadorApplicationTests {
     //Variable autoconfigurada de puerto
     @LocalServerPort
@@ -28,7 +35,8 @@ public class CuidadorApplicationTests {
     //Variable de URI que se va a tomar como base para el test
     private URI base;
 
-    private String host = "http://localhost:";
+    @Value("${server.host}")
+    private String host;
 
     //Variable autoconfigurada para hacer peticiones REST
     @Autowired
