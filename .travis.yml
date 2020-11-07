@@ -3,6 +3,9 @@ language: java
 dist: xenial
 jdk:
   - openjdk11
+# Para que travis CI sepa que hay un servicio y no falle
+services:
+  - mongodb
 script:
   # Script para que ejecute los test con la regla por defecto
   - make
