@@ -5,7 +5,7 @@ all: install package
 install:
 	sudo apt update
 	sudo apt install maven
-	sudo apt install openjdk-11-jdk
+	sudo apt install default-jdk
 	sudo apt install -y mongodb
 
 #Instala las dependencias y genera los jar
