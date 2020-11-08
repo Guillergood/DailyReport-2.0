@@ -1,6 +1,6 @@
 # DailyReport-2.0
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Language](https://img.shields.io/badge/Language-Java-fd6a02.svg)](https://www.java.com/) [![Framework](https://img.shields.io/badge/Framework-Spring-brightgreen.svg)](https://spring.io/) [![Build Status](https://travis-ci.com/Guillergood/DailyReport-2.0.svg?branch=main)](https://travis-ci.com/Guillergood/DailyReport-2.0)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Language](https://img.shields.io/badge/Language-Java-fd6a02.svg)](https://www.java.com/) [![Framework](https://img.shields.io/badge/Framework-Spring-brightgreen.svg)](https://spring.io/) [![Build Status](https://travis-ci.com/Guillergood/DailyReport-2.0.svg?branch=main)](https://travis-ci.org/Guillergood/DailyReport-2.0)
 
 DailyReport-2.0 surge de la necesidad de actualizar un proyecto de voluntariado que realizé para el zoo de Dublín en 2019, *DailyReport* (actualmente se está trabajando para poder ponerlo en un repositorio público).
 
@@ -19,7 +19,9 @@ Los objetivos principales de esta herramienta son:
 
 # [**3.Elección y justificación de tecnologías**](https://guillergood.github.io/DailyReport-2.0/docs/Tecnologias.html)
 
-Además para la justificación de corrección del hito se han hecho los [ejercicios](https://github.com/Guillergood/Ejercicios_20-21_CC/blob/main/Ejercicios%20Tema%202/Ejercicios.md)
+Además para la justificación de corrección de la siguiente entrega se han hecho los [ejercicios del tema 2](https://github.com/Guillergood/Ejercicios_20-21_CC/blob/main/Ejercicios%20Tema%202/Ejercicios.md)
+
+Como trabajo extra se puede ver en [![Build Status](https://travis-ci.com/Guillergood/DailyReport-2.0.svg?branch=main)](https://travis-ci.org/Guillergood/DailyReport-2.0) que se ha configurado para ejecutar los test automáticamente y se ha avanzado en el código del proyecto.
 
 
 
