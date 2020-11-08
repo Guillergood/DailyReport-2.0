@@ -5,7 +5,8 @@ nav_order: 8
 ---
 
 # Estructura del proyecto
-New release
+{: .d-inline-block }
+Nuevo
 {: .label .label-purple }
 
 Aquí se puede observar un mapa interactivo de la estructura del proyecto con los ficheros **.java** claves:
