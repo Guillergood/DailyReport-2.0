@@ -5,6 +5,9 @@ nav_order: 7
 ---
 
 # Uso de tecnologías
+{: .d-inline-block }
+
+Nuevo {: .label .label-green }
 
 Se ha decidido utilizar las siguientes tecnologías en el proyecto:
 
