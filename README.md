@@ -13,15 +13,44 @@ Los objetivos principales de esta herramienta son:
 + Ahorrar en costes y tiempo.
 + Permitir la toma de decisiones basadas en la información generada por los informes diarios.
 
-# [**1.Arquitectura**](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html)
+Para construir este proyecto es necesaria la herramienta ```make```
 
-# [**2.Planificación y descripción**](https://guillergood.github.io/DailyReport-2.0/docs/Planificacion.html)
+Para instalar las dependencias, se utiliza ```make install```.
 
-# [**3.Elección y justificación de tecnologías**](https://guillergood.github.io/DailyReport-2.0/docs/Tecnologias.html)
+Para compilar el proyecto, se utiliza ```make compile``` (es necesario los pasos anteriores).
+
+Para probar el proyecto, se utiliza ```make test``` (es necesario los pasos anteriores).
+
+Para compilar y probar, se utiliza ```make package``` (es necesario el paso de instalar dependencias).
+
+Orden por defecto ```make all```, que utiliza  las ordenes ```install``` y ```package```.
+
+# [**1.Descripcion**](https://guillergood.github.io/DailyReport-2.0/docs/Descripcion.html)
+
+# [**2.Arquitectura**](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html)
+
+# [**3.Planificación**](https://guillergood.github.io/DailyReport-2.0/docs/Planificacion.html)
+
+# [**4.Uso de tecnologías**](https://guillergood.github.io/DailyReport-2.0/docs/Tecnologias.html)
+
+# [**5.Estructura**](https://guillergood.github.io/DailyReport-2.0/docs/Estructura.html)
+
+Se han añadido nuevas secciones:
+
+[**4.Uso de tecnologías**](https://guillergood.github.io/DailyReport-2.0/docs/Tecnologias.html)
+
+[**5.Estructura**](https://guillergood.github.io/DailyReport-2.0/docs/Estructura.html)
 
 Además para la justificación de corrección de la siguiente entrega se han hecho los [ejercicios del tema 2](https://github.com/Guillergood/Ejercicios_20-21_CC/blob/main/Ejercicios%20Tema%202/Ejercicios.md)
 
-Como trabajo extra se puede ver en [![Build Status](https://travis-ci.com/Guillergood/DailyReport-2.0.svg?branch=main)](https://travis-ci.org/Guillergood/DailyReport-2.0) que se ha configurado para ejecutar los test automáticamente y se ha avanzado en el código del proyecto.
+Como trabajo extra se puede ver en [![Build Status](https://travis-ci.com/Guillergood/DailyReport-2.0.svg?branch=main)](https://travis-ci.org/Guillergood/DailyReport-2.0) que se ha configurado para ejecutar los test unitarios automáticamente y se ha avanzado en el código del proyecto.
 
+Se han hecho cambios con respecto al anterior hito, para mejorar la documentación de:
+
+[**1.Descripcion**](https://guillergood.github.io/DailyReport-2.0/docs/Descripcion.html)
+
+[**2.Arquitectura**](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html)
+
+[**3.Planificación**](https://guillergood.github.io/DailyReport-2.0/docs/Planificacion.html)
 
 
