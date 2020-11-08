@@ -1,9 +1,17 @@
 lenguaje:
   - java
+  
 test:
-  - /src/Animal/src/test/java/com/gbv/dailyreport/animal/AnimalApplicationTests.java
-  - /src/Burocratico/src/test/java/com/gbv/dailyreport/burocratico/BurocraticoApplicationTests.java
-  - /src/Cuidador/src/test/java/com/gbv/dailyreport/cuidador/CuidadorApplicationTests.java
-  - /src/API/src/test/java/com/gbv/dailyreport/api/ApiApplicationTests.java
+  - src/Animal/src/test/java/com/gbv/dailyreport/animal/AnimalApplicationTests.java
+  - src/Burocratico/src/test/java/com/gbv/dailyreport/burocratico/BurocraticoApplicationTests.java
+  - src/Cuidador/src/test/java/com/gbv/dailyreport/cuidador/CuidadorApplicationTests.java
+  - src/API/src/test/java/com/gbv/dailyreport/api/ApiApplicationTests.java
+  
 fichero_tareas:
   - Makefile
+  
+entidad:
+  - src/Animal/src/test/java/com/gbv/dailyreport/animal/Animal.java
+  - src/Burocratico/src/test/java/com/gbv/dailyreport/burocratico/Report.java
+  - src/Cuidador/src/test/java/com/gbv/dailyreport/cuidador/Cuidador.java
+  
