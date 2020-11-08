@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Tecnologias
-nav_order: 7
+title: Estructura
+nav_order: 8
 ---
 
 # Estructura del proyecto
