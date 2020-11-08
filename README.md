@@ -25,7 +25,7 @@ Para compilar y probar, se utiliza ```make package``` (es necesario el paso de i
 
 Orden por defecto ```make all```, que utiliza  las ordenes ```install``` y ```package```.
 
-# [**1.Descripcion**](https://guillergood.github.io/DailyReport-2.0/docs/Descripcion.html)
+# [**1.Descripción**](https://guillergood.github.io/DailyReport-2.0/docs/Descripcion.html)
 
 # [**2.Arquitectura**](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html)
 
@@ -47,7 +47,7 @@ Como trabajo extra se puede ver en [![Build Status](https://travis-ci.com/Guille
 
 Se han hecho cambios con respecto al anterior hito, para mejorar la documentación de:
 
-[**1.Descripcion**](https://guillergood.github.io/DailyReport-2.0/docs/Descripcion.html)
+[**1.Descripción**](https://guillergood.github.io/DailyReport-2.0/docs/Descripcion.html)
 
 [**2.Arquitectura**](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html)
 
