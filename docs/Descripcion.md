@@ -65,28 +65,28 @@ Investigar sobre Spring Cloud
 # **Clases:**
 Se ha creado el esqueleto de las siguientes clases:
 
-  [*Animal*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Animal/Animal.java)
+  [*Animal*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Animal/src/main/java/com/gbv/dailyreport/animal/Animal.java)
   
-  [*AnimalApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Animal/AnimalApplication.java)
+  [*AnimalApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Animal/src/main/java/com/gbv/dailyreport/animal/AnimalApplication.java)
   
-  [*AnimalController*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Animal/AnimalController.java)
+  [*AnimalController*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Animal/src/main/java/com/gbv/dailyreport/animal/AnimalController.java)
   
-  [*AnimalRepository*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Animal/AnimalRepository.java)
+  [*AnimalRepository*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Animal/src/main/java/com/gbv/dailyreport/animal/AnimalRepository.java)
   
-  [*Report*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Burocratico/Report.java)
+  [*Report*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Burocratico/src/main/java/com/gbv/dailyreport/burocratico/Report.java)
   
-  [*BurocraticoApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Burocratico/BurocraticoApplication.java)
+  [*BurocraticoApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Burocratico/src/main/java/com/gbv/dailyreport/burocratico/BurocraticoApplication.java)
   
-  [*BurocraticoController*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Burocratico/BurocraticoController.java)
+  [*BurocraticoController*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Burocratico/src/main/java/com/gbv/dailyreport/burocratico/BurocraticoController.java)
   
-  [*ReportRepository*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Burocratico/ReportRepository.java)
+  [*ReportRepository*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Burocratico/src/main/java/com/gbv/dailyreport/burocratico/ReportRepository.java)
   
-  [*Cuidador*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Cuidador/Cuidador.java)
+  [*Cuidador*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Cuidador/src/main/java/com/gbv/dailyreport/cuidador/Cuidador.java)
   
-  [*CuidadorApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Cuidador/CuidadorApplication.java)
+  [*CuidadorApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Cuidador/src/main/java/com/gbv/dailyreport/cuidador/CuidadorApplication.java)
   
-  [*CuidadorController*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Cuidador/CuidadorController.java)
+  [*CuidadorController*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Cuidador/src/main/java/com/gbv/dailyreport/cuidador/CuidadorController.java)
   
-  [*CuidadorRepository*](https://github.com/Guillergood/DailyReport-2.0/blob/main/Cuidador/CuidadorRepository.java)
+  [*CuidadorRepository*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Cuidador/src/main/java/com/gbv/dailyreport/cuidador/CuidadorRepository.java)
   
-  [*ApiApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/API/ApiApplication.java)
+  [*ApiApplication*](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/API/src/main/java/com/gbv/dailyreport/api/ApiApplication.java)
