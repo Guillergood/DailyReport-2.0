@@ -33,8 +33,6 @@ Las entidades que se van a utilizar en este proyecto son:
   
 - Animal
   
-- Agente Burocrático
-  
 - Cuidador
 
 # **Planificación del proyecto:**
