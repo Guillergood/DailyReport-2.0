@@ -9,8 +9,6 @@ nav_order: 7
 Nuevo
 {: .label .label-purple }
 
-Nuevo {: .label .label-green }
-
 Se ha decidido utilizar las siguientes tecnologías en el proyecto:
 
   * **Makefile** como gestor de tareas, debido a su gran uso y capacidad de configuración, la capacidad de compatibilidad en sistemas Unix/Linux además del uso extendido dado personalmente.
