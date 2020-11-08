@@ -13,6 +13,8 @@ Los objetivos principales de esta herramienta son:
 + Ahorrar en costes y tiempo.
 + Permitir la toma de decisiones basadas en la información generada por los informes diarios.
 
+# Instalación
+
 Para construir este proyecto es necesaria la herramienta ```make```
 
 Para instalar las dependencias, se utiliza ```make install```.
@@ -25,15 +27,19 @@ Para compilar y probar, se utiliza ```make package``` (es necesario el paso de i
 
 Orden por defecto ```make all```, que utiliza  las ordenes ```install``` y ```package```.
 
-# [**1.Descripción**](https://guillergood.github.io/DailyReport-2.0/docs/Descripcion.html)
+# Docs
 
-# [**2.Arquitectura**](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html)
+## [**1.Descripción**](https://guillergood.github.io/DailyReport-2.0/docs/Descripcion.html)
 
-# [**3.Planificación**](https://guillergood.github.io/DailyReport-2.0/docs/Planificacion.html)
+## [**2.Arquitectura**](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html)
 
-# [**4.Uso de tecnologías**](https://guillergood.github.io/DailyReport-2.0/docs/Tecnologias.html)
+## [**3.Planificación**](https://guillergood.github.io/DailyReport-2.0/docs/Planificacion.html)
 
-# [**5.Estructura**](https://guillergood.github.io/DailyReport-2.0/docs/Estructura.html)
+## [**4.Uso de tecnologías**](https://guillergood.github.io/DailyReport-2.0/docs/Tecnologias.html)
+
+## [**5.Estructura**](https://guillergood.github.io/DailyReport-2.0/docs/Estructura.html)
+
+# Cambios
 
 Se han añadido nuevas secciones:
 
