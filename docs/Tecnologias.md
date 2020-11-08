@@ -6,6 +6,8 @@ nav_order: 7
 
 # Uso de tecnologías
 {: .d-inline-block }
+Nuevo
+{: .label .label-purple }
 
 Nuevo {: .label .label-green }
 

@@ -6,8 +6,8 @@ nav_order: 6
 
 # Planificación y descripción
 {: .d-inline-block }
-
-Cambiado {: .label .label-blue }
+Cambiado
+{: .label .label-blue }
 
 # **Historias de usuario:**
 
