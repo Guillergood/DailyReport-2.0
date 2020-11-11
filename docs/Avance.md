@@ -9,10 +9,6 @@ nav_order: 9
 Nuevo
 {: .label .label-purple }
 
-https://github.com/Guillergood/DailyReport-2.0/issues/31
-
-https://github.com/Guillergood/DailyReport-2.0/issues/32
-
 De acuerdo con el [Roadmap](https://guillergood.github.io/DailyReport-2.0/docs/Planificacion.html)
 
 Se ha completado la primera fase de desarrollo, donde se han cerrado los siguientes issues:
