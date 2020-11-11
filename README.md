@@ -33,10 +33,10 @@ Para construir este proyecto es necesaria la herramienta ```make```
 
 Para instalar las dependencias, se utiliza ```make install```.
 
-Para compilar el proyecto, se utiliza ```make compile``` (es necesario los pasos anteriores).
+Para compilar el proyecto, se utiliza ```make compile``` .
 
-Para probar el proyecto, se utiliza ```make test``` (es necesario los pasos anteriores).
+Para probar el proyecto, se utiliza ```make test``` .
 
-Para compilar y probar, se utiliza ```make package``` (es necesario el paso de instalar dependencias).
+Para compilar y probar, se utiliza ```make package```.
 
 Orden por defecto ```make all```, que utiliza  las ordenes ```install``` y ```package```.
