@@ -11,7 +11,7 @@ Nuevo
 
 Se ha decidido utilizar las siguientes tecnologías en el proyecto:
 
-  * **Makefile** como gestor de tareas, debido a su gran uso y capacidad de configuración, la capacidad de compatibilidad en sistemas Unix/Linux además del uso extendido dado personalmente.
+  * **Maven** como gestores de tareas y dependencias, se ha optado por esta extraña combinación debido a que Maven uso un enfoque más declarativo y no un enfoque basado en tareas como **Ant** o en los tradicionales **Makefile**. Permite ahorrar tiempo y hacer cumplir estándares en scripts de compilación. El proyecto se subdivide en otros proyectos con sus respectivos **pom.xml** (archivos de configuración de Maven) con sus diferentes ciclos de vida y aquí es donde entra el uso de **Makefile** para automatizar y permitir el uso de tareas de Maven de cada uno de los proyectos. Se ha utilizado **Makefile** frente a **Ant** por su mejor legibilidad de gestor de tareas, el formato xml es más farragoso de leer.
   
   * **JUnit** como biblioteca de aserciones, debido a su amplio uso por organizaciones en proyectos con el lenguaje **Java**. Ya ha marcado tendencia y es un estándar en los proyectos de este lenguaje de programación, llegando a hacer bastante eficiente el proceso de las pruebas. Por último, destacar su funcionalidad de poder crear "suites tests" para hacer más exhaustiva y completa la búsqueda de errores.
   
