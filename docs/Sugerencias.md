@@ -7,3 +7,9 @@ Se han hecho cambios con respecto a la anterior entrega, para mejorar la documen
 [**2.Arquitectura**](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html)
 
 [**3.Planificación**](https://guillergood.github.io/DailyReport-2.0/docs/Planificacion.html)
+
+Cerrando los siguientes issues:
+
+[Mejora de documentación](https://github.com/Guillergood/DailyReport-2.0/issues/31)
+
+[Reorganizar proyecto](https://github.com/Guillergood/DailyReport-2.0/issues/32)
