@@ -13,17 +13,41 @@ Cambiado
 
 Las historias de usuario que describen este proyecto se muestran a continuación:
 
-[Como Cuidador quiero poder generar el informe final con todos los reportes de los demás cuidadores para tener el informe diario requerido por la ley.](https://github.com/Guillergood/DailyReport-2.0/issues/11)
+[[HU8] Crear microservicio Animal ](https://github.com/Guillergood/DailyReport-2.0/issues/47)
 
-[Como Cuidador quiero poder administrar la colección de animales para añadir, eliminar y editar animales.](https://github.com/Guillergood/DailyReport-2.0/issues/12)
+[[HU14] Crear microservicio Burocrático ](https://github.com/Guillergood/DailyReport-2.0/issues/48)
 
-[Como Cuidador quiero poder listar los animales ya comprobados para saber cuál de ellos tengo que revisar.](https://github.com/Guillergood/DailyReport-2.0/issues/13)
+[[HU20] Crear microservicio Cuidador ](https://github.com/Guillergood/DailyReport-2.0/issues/49)
 
-[Como Cuidador, necesito poder hacer reportes de otros días para poder cubrir días donde el sistema ha fallado.](https://github.com/Guillergood/DailyReport-2.0/issues/17)
+[[HU9] Crear entidad Animal ](https://github.com/Guillergood/DailyReport-2.0/issues/50)
 
-[Como Cuidador del zoológico me gustaría reportar sobre los animales para poder añadir información al informe final.](https://github.com/Guillergood/DailyReport-2.0/issues/10)
+[[HU15] Crear entidad Report (Informe) ](https://github.com/Guillergood/DailyReport-2.0/issues/51)
 
-[Como administrador del zoológico quiero poder tener en el correo el informe generado para saber que se ha generado el reporte final y sea más cómodo leer.](https://github.com/Guillergood/DailyReport-2.0/issues/15)
+[[HU21] Crear la entidad Cuidador ](https://github.com/Guillergood/DailyReport-2.0/issues/52)
+
+[[HU10] Crear Animal ](https://github.com/Guillergood/DailyReport-2.0/issues/53)
+
+[[HU16] Crear informes. ](https://github.com/Guillergood/DailyReport-2.0/issues/54)
+
+[[HU22] Crear Cuidadores ](https://github.com/Guillergood/DailyReport-2.0/issues/55)
+
+[[HU13] Eliminar Animal ](https://github.com/Guillergood/DailyReport-2.0/issues/59)
+
+[[HU19] Eliminar Informes ](https://github.com/Guillergood/DailyReport-2.0/issues/60)
+
+[[HU12] Eliminar Cuidadores ](https://github.com/Guillergood/DailyReport-2.0/issues/61)
+
+[[HU24] Consultar Animal ](https://github.com/Guillergood/DailyReport-2.0/issues/62)
+
+[[HU18] Consultar Informe ](https://github.com/Guillergood/DailyReport-2.0/issues/63)
+
+[[HU25] Consultar Cuidador ](https://github.com/Guillergood/DailyReport-2.0/issues/64)
+
+[[HU11] Editar Animales](https://github.com/Guillergood/DailyReport-2.0/issues/56)
+
+[[HU17] Editar Informes](https://github.com/Guillergood/DailyReport-2.0/issues/57)
+
+[[HU23] Editar Cuidador](https://github.com/Guillergood/DailyReport-2.0/issues/58)
 
 # **Entidades:**
 
