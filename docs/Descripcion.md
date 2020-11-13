@@ -63,17 +63,9 @@ Las entidades que se van a utilizar en este proyecto son:
 
 El proyecto se va a dividir en los siguientes milestones, centrados en la entidad principal **Report (informe)** y priorizados de la siguiente manera para que se desarrolle de forma incremental:
 
-**[Administración animal](https://github.com/Guillergood/DailyReport-2.0/milestone/12)**
-Como Cuidador quiero poder administrar la colección de animales para añadir, eliminar y editar animales.
-Como Cuidador quiero poder listar los animales ya comprobados para saber cuál de ellos tengo que revisar.
+**[Funcionalidades básicas](https://github.com/Guillergood/DailyReport-2.0/milestone/12)**
 
-**[Creación de informes](https://github.com/Guillergood/DailyReport-2.0/milestone/6):**
-Como Cuidador del zoológico me gustaría reportar sobre los animales para poder añadir información al informe final.
-Como Cuidador quiero poder generar el informe final con todos los reportes de los demás cuidadores para tener el informe diario requerido por la ley.
-
-**[Administración de informes](https://github.com/Guillergood/DailyReport-2.0/milestone/7):**
-Como Cuidador, necesito poder hacer reportes de otros días para poder cubrir días donde el sistema ha fallado.
-Como administrador del zoológico quiero poder tener en el correo el informe generado para saber que se ha generado el reporte final y sea más cómodo leer.
+**[Funcionalidades avanzadas](https://github.com/Guillergood/DailyReport-2.0/milestone/7):**
 
 **[Despliegue en la nube:](https://github.com/Guillergood/DailyReport-2.0/milestone/9)**
 Investigar cómo poder subir proyectos a Google Cloud
