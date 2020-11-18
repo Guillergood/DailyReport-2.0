@@ -84,3 +84,14 @@ Este desarrollo corresponde con las siguientes historias de usuario:
 *	[Consultar](https://github.com/Guillergood/DailyReport-2.0/issues/63), cuya funcionalidad está comprobada en el método [getReport()](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Burocratico/src/test/java/com/gbv/dailyreport/burocratico/BurocraticoApplicationTests.java#L69)
 
 *	[Eliminar](https://github.com/Guillergood/DailyReport-2.0/issues/60), cuya funcionalidad está comprobada en el método [deleteReport()](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/Burocratico/src/test/java/com/gbv/dailyreport/burocratico/BurocraticoApplicationTests.java#L81)
+
+#### **Api** (tiene dependencia con **Cuidador**, **Animal** e **Informe**)
+
+* [ApiApplicationTests](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/API/src/test/java/com/gbv/dailyreport/api/ApiApplicationTests.java) , donde se recogen todos los test en diferentes métodos.
+
+  Una vez diseñadas las pruebas, se pasó a implementar los distintos módulos:
+  * [ApiApplication](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/API/src/main/java/com/gbv/dailyreport/api/ApiApplication.java) , clase principal donde se ejecuta el servicio.
+
+Este desarrollo corresponde con las siguientes historias de usuario:
+*	[Crear microservicio](https://github.com/Guillergood/DailyReport-2.0/issues/36), cuyos test están contenidos en [ApiApplicationTests](https://github.com/Guillergood/DailyReport-2.0/blob/main/src/API/src/test/java/com/gbv/dailyreport/api/ApiApplicationTests.java), donde funconan los distintas llamadas a los distintos microservicios.
+
