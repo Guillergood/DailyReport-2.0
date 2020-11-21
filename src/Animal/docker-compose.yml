@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  mongo:
+    image: 'bitnami/mongodb:latest'
+    container_name: "mongo"
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGODB_USERNAME=test
+      - MONGODB_PASSWORD=test
+      - MONGODB_DATABASE=test
+  animal:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: dailyreport-animal
+    container_name: "animal"
+    links:
+      - mongo
+    environment:
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+      - MONGODB_HOST=mongo
+      - MONGODB_PORT=27017
+      - MONGODB_USERNAME=test
+      - MONGODB_PASSWORD=test
+      - MONGODB_DATABASE=test
+
+    depends_on:
+      - mongo
+    ports:
+      - "8000:8000"
