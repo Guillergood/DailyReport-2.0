@@ -1,0 +1,84 @@
+version: '3.3'
+
+services:
+  mongoanimal:
+    image: 'bitnami/mongodb:latest'
+    container_name: "mongoanimal"
+    ports:
+      - '27017:27017'
+  mongocuidador:
+    image: 'bitnami/mongodb:latest'
+    container_name: "mongocuidador"
+    ports:
+      - '27018:27017'
+  mongoburocratico:
+    image: 'bitnami/mongodb:latest'
+    container_name: "mongoburocratico"
+    ports:
+      - '27019:27017'
+  mongoapi:
+    image: 'bitnami/mongodb:latest'
+    container_name: "mongoapi"
+    ports:
+      - '27020:27017'
+  animal:
+    build: ./src/Animal
+    image: dailyreport-animal
+    container_name: "animal"
+    links:
+      - mongoanimal
+    environment:
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+      - MONGODB_HOST=mongoanimal
+      - MONGODB_PORT=27017
+
+    depends_on:
+      - mongoanimal
+    ports:
+      - "8080:8080"
+  cuidador:
+    build: ./src/Cuidador
+    image: dailyreport-cuidador
+    container_name: "cuidador"
+    links:
+      - mongocuidador
+    environment:
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8082
+      - MONGODB_HOST=mongocuidador
+      - MONGODB_PORT=27017
+
+    depends_on:
+      - mongocuidador
+    ports:
+      - "8082:8082"
+
+  burocratico:
+    build: ./src/Burocratico
+    image: dailyreport-burocratico
+    container_name: "burocratico"
+    links:
+      - mongoburocratico
+    environment:
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8081
+      - MONGODB_HOST=mongoburocratico
+      - MONGODB_PORT=27017
+
+    depends_on:
+      - mongoburocratico
+      - cuidador
+      - animal
+    ports:
+      - "8081:8081"
+  api:
+    build: ./src/API
+    image: dailyreport-api
+    container_name: "api"
+    links:
+      - mongoapi
+    environment:
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+    depends_on:
+      - mongoapi
+      - cuidador
+      - animal
+      - burocratico
