@@ -5,22 +5,22 @@ services:
     image: 'bitnami/mongodb:latest'
     container_name: "mongoanimal"
     ports:
-      - '27017:27017'
+      - '${{ PORT_DB_ANIMAL }}:${{ PORT_DB_DEFAULT }}'
   mongocuidador:
     image: 'bitnami/mongodb:latest'
     container_name: "mongocuidador"
     ports:
-      - '27018:27017'
+      - '${{ PORT_DB_CUIDADOR }}:${{ PORT_DB_DEFAULT }}'
   mongoburocratico:
     image: 'bitnami/mongodb:latest'
     container_name: "mongoburocratico"
     ports:
-      - '27019:27017'
+      - '${{ PORT_DB_BUROCRATICO }}:${{ PORT_DB_DEFAULT }}'
   mongoapi:
     image: 'bitnami/mongodb:latest'
     container_name: "mongoapi"
     ports:
-      - '27020:27017'
+      - '${{ PORT_DB_API }}:${{ PORT_DB_DEFAULT }}'
   animal:
     build: ./src/Animal
     image: dailyreport-animal
@@ -28,14 +28,14 @@ services:
     links:
       - mongoanimal
     environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ PORT_HOST_ANIMAL }}
       - MONGODB_HOST=mongoanimal
-      - MONGODB_PORT=27017
+      - MONGODB_PORT=${{ PORT_DB_DEFAULT }}
 
     depends_on:
       - mongoanimal
     ports:
-      - "8080:8080"
+      - "${{ PORT_HOST_ANIMAL }}:${{ PORT_HOST_ANIMAL }}"
   cuidador:
     build: ./src/Cuidador
     image: dailyreport-cuidador
@@ -43,14 +43,14 @@ services:
     links:
       - mongocuidador
     environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8082
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ PORT_HOST_CUIDADOR }}
       - MONGODB_HOST=mongocuidador
-      - MONGODB_PORT=27017
+      - MONGODB_PORT=${{ PORT_DB_DEFAULT }}
 
     depends_on:
       - mongocuidador
     ports:
-      - "8082:8082"
+      - "${{ PORT_HOST_CUIDADOR }}:${{ PORT_HOST_CUIDADOR }}"
 
   burocratico:
     build: ./src/Burocratico
@@ -59,16 +59,16 @@ services:
     links:
       - mongoburocratico
     environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8081
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ PORT_HOST_BUROCRATICO }}
       - MONGODB_HOST=mongoburocratico
-      - MONGODB_PORT=27017
+      - MONGODB_PORT=${{ PORT_DB_DEFAULT }}
 
     depends_on:
       - mongoburocratico
       - cuidador
       - animal
     ports:
-      - "8081:8081"
+      - "${{ PORT_HOST_BUROCRATICO }}:${{ PORT_HOST_BUROCRATICO }}"
   api:
     build: ./src/API
     image: dailyreport-api
@@ -76,7 +76,7 @@ services:
     links:
       - mongoapi
     environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ PORT_HOST_API }}
     depends_on:
       - mongoapi
       - cuidador
