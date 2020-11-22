@@ -1,0 +1,49 @@
+name: Daily Report Push
+on: [push]
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Login to GitHub Package Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_TOKEN }}
+  build:
+    strategy:
+      #Matriz donde se van a guardar valores que se van a utilizar
+      matrix:
+        platform: [ubuntu-latest]
+        JDK: [11]
+
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      #Utiliza "checkout" para poder acceder al repositorio
+      - uses: actions/checkout@v2
+      #Uno de los nombres de la acción que vamos a hacer (para ser más legible)
+      - name: Despliega Java con el JDK ${{ matrix.JDK }}
+        #Utiliza "setup-java" para configurar java...
+        uses: actions/setup-java@v1
+        with:
+          #... con el JDK que se ha indicado
+          java-version: ${{ matrix.JDK }}
+
+      - name: Utiliza las variables globales para todo el proyecto
+        #Utiliza "allenevans/set-env" que permite definir variables que se pueden utilizar en todo el despliegue
+        uses: allenevans/set-env@v2.0.0
+        with:
+          PORT_HOST_API: ${{ secrets.PORT_HOST_API }}
+          PORT_HOST_CUIDADOR: ${{ secrets.PORT_HOST_CUIDADOR }}
+          PORT_HOST_BUROCRATICO: ${{ secrets.PORT_HOST_BUROCRATICO }}
+          PORT_HOST_ANIMAL: ${{ secrets.PORT_HOST_ANIMAL }}
+
+          PORT_DB_DEFAULT: ${{ secrets.DEFAULT_DB_PORT }}
+          PORT_DB_API: ${{ secrets.PORT_DB_API }}
+          PORT_DB_CUIDADOR: ${{ secrets.PORT_DB_CUIDADOR }}
+          PORT_DB_BUROCRATICO: ${{ secrets.PORT_DB_BUROCRATICO }}
+          PORT_DB_ANIMAL: ${{ secrets.PORT_DB_ANIMAL }}
