@@ -20,6 +20,7 @@ Los requisitos para esto son:
 - Tener un contenedor que subir.
 
 En el proyecto de DailyReport-2.0 hay 4 contenedores a subir: `Animal`, `Cuidador`, `Burocratico`, `Api`.
+Además del propio proyecto `DailyReport-2.0`.
 
 Una vez construidos los contenedores, se marcan:
 
@@ -28,6 +29,7 @@ docker tag 6a3862129a24 guillergood/dailyreport-api:latest
 docker tag 642490bc22dd guillergood/dailyreport-burocratico:latest
 docker tag ed95ee3120e5 guillergood/dailyreport-cuidador:latest
 docker tag c9cf4c6afef1 guillergood/dailyreport-animal:latest
+docker tag 1e24da8f62dd guillergood/dailyreport-2.0:latest
 ```
 
 Y se suben a los repositorios:
@@ -36,15 +38,16 @@ Y se suben a los repositorios:
 docker push guillergood/dailyreport-api &&
 docker push guillergood/dailyreport-burocratico &&
 docker push guillergood/dailyreport-cuidador &&
-docker push guillergood/dailyreport-animal
+docker push guillergood/dailyreport-animal &&
+docker push guillergood/dailyreport-2.0
 ```
 
 ## Automatización
 
 Una vez subidos, en cada repositorio se tiene que configurar para que cada vez que se suba código, se genere una nueva versión. Puesto que son cuatro contenedores en el mismo proyecto, hay que definir el mismo proyecto y cada carpeta donde se contiene el archivo Dockerfile. Esta configuración está en la pestaña *Build*
 
-![]()
+![](https://raw.githubusercontent.com/Guillergood/DailyReport-2.0/gh-pages/image/1.png)
 
 Y una vez hecha esta configuración, ya funcionaría. 
 
-![]()
+![](https://raw.githubusercontent.com/Guillergood/DailyReport-2.0/gh-pages/image/2.png)

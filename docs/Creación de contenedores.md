@@ -62,6 +62,18 @@ CMD ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "./app.jar"]
 
 EXPOSE 8082
 ```
+### Dockerfile de DailyReport
+```Dockerfile
+FROM adoptopenjdk/maven-openjdk11
+WORKDIR .
+COPY /src/dailyreport/src /dailyreport/src
+COPY /src/dailyreport/pom.xml /dailyreport
+RUN cd dailyreport && mvn clean package
+WORKDIR ./dailyreport
+CMD ["mvn", "test"]
+```
+Con simplemente ejecutar, el sistema ejecutaría los test `docker run guillergood/dailyreport-2.0:latest`
+
 
 ### Docker Compose
 
