@@ -8,6 +8,7 @@
 		<version>2.3.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	<packaging>pom</packaging>
 	<groupId>com.gbv.dailyreport</groupId>
 	<artifactId>DailyReport</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -17,6 +18,13 @@
 	<properties>
 		<java.version>15</java.version>
 	</properties>
+
+	<modules>
+		<module>src/Animal</module>
+		<module>src/Cuidador</module>
+		<module>src/Burocratico</module>
+		<module>src/API</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
@@ -39,6 +47,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 
 	</dependencies>
 

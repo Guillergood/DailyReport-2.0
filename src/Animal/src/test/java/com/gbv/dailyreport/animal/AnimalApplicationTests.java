@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -30,7 +31,9 @@ import java.util.Objects;
 @TestPropertySource("/application.properties")
 @Configuration
 @ComponentScan
+@AutoConfigureDataMongo
 public class AnimalApplicationTests {
+
     //Variable autoconfigurada de puerto
     @LocalServerPort
     private int port;
