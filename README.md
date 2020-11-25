@@ -4,28 +4,17 @@
 
 
 
-# Documentación
+# Contenedores y automatización de registros
+  
+ [Estudio de contenedor base y creación óptima del Dockerfile](https://guillergood.github.io/DailyReport-2.0/docs/Creaci%C3%B3n%20de%20contenedores.html)
+  
+ [Docker Hub y automatización de subidas](https://guillergood.github.io/DailyReport-2.0/docs/Contenedores%20remotos.html)
+  
+ [Alternativas de Docker Hub (Github Container Registry)](https://guillergood.github.io/DailyReport-2.0/docs/Alternativas.html)
+  
+# Página del proyecto
 
-# [**0.Problema a resolver**](https://guillergood.github.io/DailyReport-2.0/)
-
-# [**1.Descripción del proyecto**](https://guillergood.github.io/DailyReport-2.0/docs/Descripcion.html)
-
-# [**2.Arquitectura**](https://guillergood.github.io/DailyReport-2.0/docs/Arquitectura.html)
-
-# [**3.Planificación (Roadmap)**](https://guillergood.github.io/DailyReport-2.0/docs/Planificacion.html)
-
-# [**4.Uso de tecnologías**](https://guillergood.github.io/DailyReport-2.0/docs/Tecnologias.html)
-
-# [**5.Estructura**](https://guillergood.github.io/DailyReport-2.0/docs/Estructura.html)
-
-
-# Avances realizados, tests y herramientas.
-
-[**Gestor de tareas, biblioteca de aserciones y marco de pruebas**](https://guillergood.github.io/DailyReport-2.0/docs/Tecnologias.html) y su justificación.
-
-[**Avance del código**](https://guillergood.github.io/DailyReport-2.0/docs/Avance.html) con justificaciones relacionadas con las historias de usuario.
-
-[**Pruebas de código y mejoras con respecto a recomendaciones**](https://guillergood.github.io/DailyReport-2.0/docs/Sugerencias.html)
+https://guillergood.github.io/DailyReport-2.0
 
 # Construcción del proyecto
 
