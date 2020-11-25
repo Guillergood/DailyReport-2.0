@@ -29,14 +29,12 @@
 
 # Construcción del proyecto
 
-Para construir este proyecto es necesaria la herramienta ```make```
+Para instalar las herramientas necesarias para ejecutar este proyecto se puede utilizar ```make```
 
-Para instalar las dependencias, se utiliza ```make install```.
+Para instalar las dependencias, se utiliza ```mvn install```.
 
-Para compilar el proyecto, se utiliza ```make compile``` .
+Para compilar el proyecto, se utiliza ```mvn compile``` .
 
-Para probar el proyecto, se utiliza ```make test``` .
+Para probar el proyecto, se utiliza ```mvn test``` .
 
-Para compilar y probar, se utiliza ```make package```.
-
-Orden por defecto ```make all```, que utiliza  las ordenes ```install``` y ```package```.
+Para compilar y probar, se utiliza ```mvn package```.
