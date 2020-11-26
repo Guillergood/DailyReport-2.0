@@ -1,5 +1,5 @@
 
-FROM csanchez/maven:3-adoptopenjdk-15-openj9
+FROM csanchez/maven:latest
 WORKDIR .
 COPY pom.xml app/test/
 WORKDIR app/test/
