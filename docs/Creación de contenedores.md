@@ -13,13 +13,32 @@ Nuevo
 
 Se ha estado estudiando los diferentes contenedores para proporcionar al proyecto una base con el menor tamaño posible.
 Con las dependencias de `openjdk versión 11`, `maven`, para los diferentes servicios.
+El problema es que hay escasos sitios donde elegir, puesto que hasta la versión de Java 8, Oracle JDK estaba disponible de forma más extendida. De todos modos, las distribuciones de Linux construyeron sus propios binarios. Las distribuciones binarias de AdoptOpenJDK, Amazon Corretto entre otras, solo están en Docker Hub, porque Oracle ya no proporciona archivos binarios libremente. Así que se adopta OpenJDK .
+Y si eso ya reduce la búsqueda, con maven aún más porque solo hay 3 posibilidades: el propio `maven`, `adoptopenjdk` y `csanchez`.
+
 Y para la base de datos `mongodb`, pero para únicamente probar la aplicación no es necesario puesto que se simula (aunque ya se tiene en cuenta para las pruebas en producción).
 Por tanto, se han elegido los siguientes contenedores:
-`adoptopenjdk/maven-openjdk11` para los servicios puesto que tiene las dependencias con el mínimo tamaño. Frente a esta alternativa se buscó en el repositorio de Maven, y se encontró que Maven adopta este paquete y aún así sigue teniendo más tamaño.
+`adoptopenjdk/maven-openjdk11` para los servicios puesto que tiene las dependencias con el mínimo tamaño. Frente a esta alternativa se buscó en el repositorio de Maven, y se encontró que Maven adopta este paquete y aun así sigue teniendo más tamaño.
 
 Para las dependencias de base de datos se ha buscado un paquete más pesado. El de `bitnami/mongodb` frente al oficial de `mongo`.
-Se ha elegido de está manera porque la versión `lastest` del primero son mucho más frecuentes (casi diarias), frente al de mongo que sus actualizaciones son más tardías.
-Las diferencias de ambos son de 3MB y `Bitnami` es conocido por proveer de paquetes que permite desplegar fácilmente servicios para desarrollar proyectos.
+Se ha elegido de esta manera porque la versión `lastest` del primero son mucho más frecuentes (casi diarias), frente al de mongo que sus actualizaciones son más tardías.
+Las diferencias entre ambos es de 3MB y `Bitnami` es conocido por proveer de paquetes que permite desplegar fácilmente servicios para desarrollar proyectos.
+
+### Análisis de diferentes imágenes
+
+Debido al gran tamaño que tienen las imágenes de `maven`, se han descartado.
+
+La opción queda entre `adoptopenjdk` y `csanchez`. Al construir dos imágenes con exactamente lo mismo, ya la diferencia de tamaño es bastante grande `115MB`.
+
+![](https://raw.githubusercontent.com/Guillergood/DailyReport-2.0/gh-pages/image/3.png)
+
+Aun así, se ha comparado las capas con la herramienta `dive`:
+
+![](https://raw.githubusercontent.com/Guillergood/DailyReport-2.0/gh-pages/image/4.png)
+
+![](https://raw.githubusercontent.com/Guillergood/DailyReport-2.0/gh-pages/image/5.png)
+
+Como se puede ver, ambas son muy eficientes y no hay apenas malgasto. Se opta por la imagen de menos tamaño, `csanchez`.
 
 ### Dockerfile de DailyReport
 
@@ -44,7 +63,8 @@ COPY /pom.xml /
 CMD ["mvn", "test"]
 ```
 
-En la versión final, hay un margen considerable ya que sólo en tamaño hay un ahorro considerable de megas unos 130MB aproximadamente.
+En esta versión, hay un margen considerable ya que solo en tamaño hay un ahorro considerable de megas unos 130MB aproximadamente.
+Pero se copiaba los archivos fuentes dentro de la imagen.
 ```bash
 FROM adoptopenjdk/maven-openjdk11
 WORKDIR .
@@ -59,13 +79,16 @@ COPY /src/API/pom.xml /src/API
 COPY /pom.xml /
 CMD ["mvn","test"]
 ```
-Aquí podemos observar la diferencia de tamaños, teniendo el mismo tamaño que la imagen que se ha tomado de base.
-![](https://raw.githubusercontent.com/Guillergood/DailyReport-2.0/gh-pages/image/3.png)
+En la versión final no se copia los archivos fuente, y solo se deja lo necesario, el archivo `pom.xml` que es el que se necesita para que `mvn` trabaje correctamente.
+```bash
+FROM csanchez/maven:latest
+FROM csanchez/maven:3-adoptopenjdk-15-openj9
+WORKDIR .
+COPY pom.xml app/test/
+WORKDIR app/test/
+```
 
-
-Con simplemente ejecutar, el sistema ejecutaría los test `docker run guillergood/dailyreport-2.0:latest`
-
-
+Con simplemente ejecutar(estando en la carpeta del repositorio) `docker run -t -v "$(pwd)":/app/test dailyreport-2.0` , el sistema ejecutaría los test 
 
 
 ### Docker Compose
@@ -216,7 +239,7 @@ EXPOSE 8082
 
 Como se ha observado en el archivo anterior, se ha introducido los valores directamente. Esto no es una buena práctica. Para ello se ha definido un archivo de [Github Actions](https://docs.github.com/es/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions) donde se quiere pasar como variables esos valores no seguros.
 
-Gracias a *Wojciech Krzywiec* por su extenso [tutorial](https://medium.com/faun/continuous-integration-of-java-project-with-github-actions-7a8a0e8246ef) sobre estas materias y más. Se han añadido errores porque si no no salen los archivos.
+Gracias a *Wojciech Krzywiec* por su extenso [tutorial](https://medium.com/faun/continuous-integration-of-java-project-with-github-actions-7a8a0e8246ef) sobre estas materias y más.
 
 ```yaml
 name: Daily Report Push
