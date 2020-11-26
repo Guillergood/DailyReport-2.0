@@ -11,6 +11,8 @@
  [Docker Hub y automatización de subidas](https://guillergood.github.io/DailyReport-2.0/docs/Contenedores%20remotos.html)
   
  [Alternativas de Docker Hub (Github Container Registry)](https://guillergood.github.io/DailyReport-2.0/docs/Alternativas.html)
+ 
+ [Avances](https://guillergood.github.io/DailyReport-2.0/docs/Avance.html)
   
 # Página del proyecto
 
