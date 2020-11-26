@@ -88,7 +88,7 @@ COPY pom.xml app/test/
 WORKDIR app/test/
 ```
 
-Con simplemente ejecutar(estando en la carpeta del repositorio) `docker run -t -v "$(pwd)":/app/test dailyreport-2.0` , el sistema ejecutaría los test 
+Con simplemente ejecutar(estando en la carpeta del repositorio) `docker run -t -v "$(pwd)":/app/test guillergood/dailyreport-2.0:latest` , el sistema ejecutaría los test 
 
 
 ### Docker Compose
