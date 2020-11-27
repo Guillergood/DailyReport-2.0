@@ -13,7 +13,10 @@ Nuevo
 
 Se ha estado estudiando los diferentes contenedores para proporcionar al proyecto una base con el menor tamaño posible.
 Con las dependencias de `openjdk versión 11`, `maven`, para los diferentes servicios.
-El problema es que hay escasos sitios donde elegir, puesto que hasta la versión de Java 8, Oracle JDK estaba disponible de forma más extendida. De todos modos, las distribuciones de Linux construyeron sus propios binarios. Las distribuciones binarias de AdoptOpenJDK, Amazon Corretto entre otras, solo están en Docker Hub, porque Oracle ya no proporciona archivos binarios libremente. Así que se adopta OpenJDK .
+El problema es que hay escasos sitios donde elegir, puesto que hasta la versión de Java 8, Oracle JDK estaba disponible de forma más extendida. 
+Alpine usa `musl libc`, a diferencia de `glibc`, que es usado por la mayoría de Linux, lo que significa que una JVM debe ser compatible con `musl libc` para soportar Alpine. Las 3 alternativas encontradas han sido Debian y Windows.
+Se ha optado por Debian porque tiene mucho menos tamaño y es un sistema operativo libre.
+Las distribuciones de Linux construyeron sus propios binarios de Java (OpenJDK). Las distribuciones binarias de AdoptOpenJDK, Amazon Corretto entre otras, solo están en Docker Hub, porque Oracle ya no proporciona archivos binarios libremente. Así que se usa OpenJDK .
 Y si eso ya reduce la búsqueda, con maven aún más porque solo hay 3 posibilidades: el propio `maven`, `adoptopenjdk` y `csanchez`.
 
 Y para la base de datos `mongodb`, pero para únicamente probar la aplicación no es necesario puesto que se simula (aunque ya se tiene en cuenta para las pruebas en producción).
