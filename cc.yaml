@@ -8,7 +8,7 @@ test:
   - src/API/src/test/java/com/gbv/dailyreport/api/ApiApplicationTests.java
   
 fichero_tareas:
-  - Makefile
+  - pom.xml
   
 entidad:
   - src/Animal/src/main/java/com/gbv/dailyreport/animal/Animal.java

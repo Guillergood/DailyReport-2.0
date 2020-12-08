@@ -8,4 +8,4 @@ services:
   - mongodb
 script:
   # Script para que ejecute los test con la regla por defecto
-  - make
+  - mvn test
