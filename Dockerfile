@@ -11,8 +11,6 @@ RUN chown newuser /app/test
 RUN chown newuser -R /root
 # Se cambia a la carpeta donde se montará el proyecto
 WORKDIR /app/test
-# Se copia el archivo necesario "pom.xml"
-COPY pom.xml .
 # Se usa newuser
 USER newuser
 # Por último se llama al gestor de tareas para probar el proyecto.
