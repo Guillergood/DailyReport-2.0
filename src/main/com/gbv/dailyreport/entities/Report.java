@@ -6,8 +6,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //Clase que envuelve los datos relacionados con los Reports
-//Document indica el contenedor donde se guardara este objeto mongo
-@Document(collection = "reports")
+
+@Entity
 public class Report {
     //Indica el id por el que se rige este objeto
     @Id

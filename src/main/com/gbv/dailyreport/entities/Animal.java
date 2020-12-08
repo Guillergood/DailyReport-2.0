@@ -6,8 +6,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //Clase que envuelve los datos relacionados con los Animales
-//Document indica el contenedor donde se guardara este objeto mongo
-@Document(collection = "animales")
+
+@Entity
 public class Animal {
     //Indica el id por el que se rige este objeto
     @Id

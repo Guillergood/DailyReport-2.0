@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.HashSet;
 
 //Clase que envuelve los datos relacionados con los Cuidadores
-//Document indica el contenedor donde se guardara este objeto mongo
-@Document(collection = "cuidadores")
+
+@Entity
 public class Cuidador {
     //Indica el id por el que se rige este objeto
     @Id
