@@ -19,13 +19,6 @@
 		<java.version>15</java.version>
 	</properties>
 
-	<modules>
-		<module>src/Animal</module>
-		<module>src/Cuidador</module>
-		<module>src/Burocratico</module>
-		<module>src/API</module>
-	</modules>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
