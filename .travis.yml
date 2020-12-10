@@ -3,9 +3,13 @@ language: java
 dist: xenial
 jdk:
   - openjdk11
-# Para que travis CI sepa que hay un servicio y no falle
-services:
-  - mongodb
+
 script:
   # Script para que ejecute los test con la regla por defecto
-  - mvn test
+  # Con mvn clean package ejecuta todos los tests y el coverage
+  - mvn clean package
+  - mvn cobertura:cobertura
+
+after_success:
+  # report coverage to codecov.io
+  - bash <(curl https://codecov.io/bash)
