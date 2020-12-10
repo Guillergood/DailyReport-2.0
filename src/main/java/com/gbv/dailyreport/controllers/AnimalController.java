@@ -50,6 +50,17 @@ public class AnimalController {
         return ResponseEntity.ok(Objects.requireNonNull(request.getBody()));
     }
 
+
+    //Llamada POST que guarda un "Animal"
+    @PostMapping(path= "/dailyreport/animal", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> postAnimal(@RequestBody final Animal animal) {
+        animals.add(animal);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("Added successfully");
+    }
+
     @PutMapping(value = "/dailyreport/animal/{id}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> update(@PathVariable("id") final int id, @RequestBody final Animal sourceAnimal) {
         Animal targetAnimal;
@@ -66,16 +77,6 @@ public class AnimalController {
         }
 
 
-    }
-
-    //Llamada POST que guarda un "Animal"
-    @PostMapping(path= "/dailyreport/animal", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> postAnimal(@RequestBody final Animal animal) {
-        animals.add(animal);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body("Added successfully");
     }
 
     //Llamada DELETE que elimina un "Animal"
