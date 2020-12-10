@@ -16,6 +16,12 @@ script:
   #- mvn test
   - docker run -t -v "$(pwd)":/app/test guillergood/dailyreport-2.0:latest
 
+email:
+  recipients:
+    - guillergood@gmail.com
+  on_success: never # default: change
+  on_failure: always # default: always
+
 #after_success:
   # report coverage to codecov.io
   #- bash <(curl https://codecov.io/bash)
