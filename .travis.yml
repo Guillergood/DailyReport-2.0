@@ -1,6 +1,6 @@
 language: java
 # Para instalar openjdk11 sin problemas (https://travis-ci.community/t/install-of-openjdk11-is-failing-again/3061/16)
-dist: xenial
+dist: trusty
 jdk:
   - openjdk11
 
