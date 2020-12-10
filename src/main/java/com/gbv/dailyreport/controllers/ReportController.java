@@ -45,6 +45,17 @@ public class ReportController {
         return ResponseEntity.ok(report.serialize());
     }
 
+
+    //Llamada POST que guarda un "Report"
+    @PostMapping(path= "/dailyreport/report", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> postReport(@RequestBody final Report report) {
+        reports.add(report);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("Added successfully");
+    }
+
     @PutMapping(value = "/dailyreport/report/{id}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> update(@PathVariable("id") final int id, @RequestBody final Report sourceReport) {
         Report targetReport;
@@ -62,16 +73,6 @@ public class ReportController {
         }
 
 
-    }
-
-    //Llamada POST que guarda un "Report"
-    @PostMapping(path= "/dailyreport/report", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> postReport(@RequestBody final Report report) {
-        reports.add(report);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body("Added successfully");
     }
 
     //Llamada DELETE que elimina un "Report"
