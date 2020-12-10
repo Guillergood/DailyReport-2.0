@@ -45,6 +45,17 @@ public class CuidadorController {
         return ResponseEntity.ok(cuidador.serialize());
     }
 
+
+    //Llamada POST que guarda un "Cuidador"
+    @PostMapping(path= "/dailyreport/cuidador", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> postCuidador(@RequestBody final Cuidador cuidador) {
+        cuidadores.add(cuidador);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("Added successfully");
+    }
+
     @PutMapping(value = "/dailyreport/cuidador/{id}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> update(@PathVariable("id") final int id, @RequestBody final Cuidador sourceCuidador) {
         Cuidador targetCuidador;
@@ -61,16 +72,6 @@ public class CuidadorController {
         }
 
 
-    }
-
-    //Llamada POST que guarda un "Cuidador"
-    @PostMapping(path= "/dailyreport/cuidador", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> postCuidador(@RequestBody final Cuidador cuidador) {
-        cuidadores.add(cuidador);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body("Added successfully");
     }
 
     //Llamada DELETE que elimina un "Cuidador"
