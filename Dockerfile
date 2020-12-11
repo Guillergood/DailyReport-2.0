@@ -2,6 +2,7 @@
 FROM csanchez/maven:3-adoptopenjdk-15-openj9
 # Se crea la carpeta para las pruebas
 RUN mkdir -p /app/test
+COPY codecov.sh /app/test
 # Se crea un nuevo usuario sin contraseña, ni entrada en el /etc/passwd y sin carpeta home
 RUN adduser --disabled-password --gecos '' newuser
 # Se asignan los permisos en las carpetas necesarias...
@@ -14,4 +15,4 @@ WORKDIR /app/test
 # Se usa newuser
 USER newuser
 # Por último se llama al gestor de tareas para probar el proyecto.
-CMD ["mvn","test"]
+CMD ["bash","codecov.sh"]
