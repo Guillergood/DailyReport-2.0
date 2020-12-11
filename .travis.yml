@@ -1,21 +1,13 @@
 language: java
 # Para instalar openjdk11 sin problemas (https://travis-ci.community/t/install-of-openjdk11-is-failing-again/3061/16)
-dist: trusty
+dist: xenial
 jdk:
   - openjdk11
-
-services:
-  - docker
-
-before_install:
-  - echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
-  - docker pull ghcr.io/guillergood/dailyreport-2.0:latest
-
+  
 script:
   # Script para que ejecute los test con la regla por defecto
   # Con mvn clean package ejecuta todos los tests y el coverage
-  - docker run -t -v "$(pwd)":/app/test ghcr.io/guillergood/dailyreport-2.0:latest
-  - docker run ghcr.io/guillergood/dailyreport-2.0:latest /bin/bash /app/test/codecov.sh
+  - mvn verify
 
 notifications:
   email:
@@ -24,6 +16,6 @@ notifications:
     on_success: never # default: change
     on_failure: always # default: always
 
-#after_success:
+after_success:
   # report coverage to codecov.io
-  #- bash <(curl https://codecov.io/bash)
+  - bash <(curl https://codecov.io/bash)
