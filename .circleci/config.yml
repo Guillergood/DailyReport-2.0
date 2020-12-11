@@ -1,9 +1,18 @@
 version: 2.1
 
-orbs:
-  maven: circleci/maven@0.0.12
+# Tasks definition
+jobs:
+    test:
+        docker:
+            # Project's Docker image in Docker Hub
+            - image: guillergood/dailyreport-2.0:latest
+        steps:
+            - checkout
+            # Launch tests using the task manager
+            - run: mvn verify
 
+# Workflows of CircleCI
 workflows:
-  maven_test:
-    jobs:
-      - maven/test # checkout, build, test, and upload test results
+    test_project:
+        jobs:
+            - test
