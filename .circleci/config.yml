@@ -1,18 +1,14 @@
-version: 2.1
-
-# Tasks definition
+version: 2.2
 jobs:
     test:
-        docker:
-            # Project's Docker image in Docker Hub
+        docker: #Descarga de Docker la imagen del contenedor creado
             - image: guillergood/dailyreport-2.0:latest
         steps:
             - checkout
-            # Launch tests using the task manager
+            # Ejecuta la orden verify de maven
             - run: mvn verify
 
-# Workflows of CircleCI
 workflows:
-    test_project:
+    test_dailyreport:
         jobs:
             - test
