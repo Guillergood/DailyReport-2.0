@@ -7,5 +7,3 @@ workflows:
   maven_test:
     jobs:
       - maven/test # checkout, build, test, and upload test results
-      - run: "mvn verify"
-      - run: "bash <(curl -s https://codecov.io/bash)"
