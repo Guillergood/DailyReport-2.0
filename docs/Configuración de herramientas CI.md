@@ -1,10 +1,8 @@
-## 
 ---
-
 layout: default
 title: Configuración de herramientas CI
-
 nav_order: 14
+
 ---
 
 # Configuración de herramientas CI

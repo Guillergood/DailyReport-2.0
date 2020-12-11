@@ -1,17 +1,19 @@
-## 
 ---
 layout: default
 title: Estudio Herramientas de Integración Continua
 nav_order: 13
+
 ---
 
 # Estudio Herramientas de Integración Continua
+
 {: .d-inline-block }
 Nuevo
 {: .label .label-purple }
 
 
 ---
+
 ### Estudio
 
 Para escoger las mejores opciones se han estudiado las siguientes herramientas de integración continua:
