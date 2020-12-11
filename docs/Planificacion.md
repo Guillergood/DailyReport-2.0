@@ -58,11 +58,11 @@ Como primera fase de desarrollo se ha planteado tener un producto mínimo viable
 
 Como segunda fase de desarrollo, completar con más funcionalidades.
 
-[[HU11] Editar Animales](https://github.com/Guillergood/DailyReport-2.0/issues/56)🏗️
+[[HU11] Editar Animales](https://github.com/Guillergood/DailyReport-2.0/issues/56)✅
 
-[[HU17] Editar Informes](https://github.com/Guillergood/DailyReport-2.0/issues/57)🏗️
+[[HU17] Editar Informes](https://github.com/Guillergood/DailyReport-2.0/issues/57)✅
 
-[[HU23] Editar Cuidador](https://github.com/Guillergood/DailyReport-2.0/issues/58)🏗️
+[[HU23] Editar Cuidador](https://github.com/Guillergood/DailyReport-2.0/issues/58)✅
 
 
 Como tercera fase de desarrollo, investigar posibles mejoras y despliegue en la nube.
