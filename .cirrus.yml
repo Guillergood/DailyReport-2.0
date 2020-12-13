@@ -4,4 +4,4 @@ task:
     image: ghcr.io/guillergood/dailyreport-2.0:latest
   maven_cache:
     folder: ~/.m2
-  test_script: docker run -t -v "$(pwd)":/app/test ghcr.io/guillergood/dailyreport-2.0
+  test_script: mvn test -B
