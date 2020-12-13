@@ -11,7 +11,7 @@ fichero_tareas:
   - pom.xml
   
 entidad:
-  - src/main/java/com/gbv/dailyreport/Animal.java
-  - src/main/java/com/gbv/dailyreport/Report.java
-  - src/main/java/com/gbv/dailyreport/Cuidador.java
+  - src/main/java/com/gbv/dailyreport/model/Animal.java
+  - src/main/java/com/gbv/dailyreport/model/Report.java
+  - src/main/java/com/gbv/dailyreport/model/Cuidador.java
   
