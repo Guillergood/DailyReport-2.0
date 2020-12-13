@@ -2,16 +2,16 @@ lenguaje:
   - java
   
 test:
-  - src/Animal/src/test/java/com/gbv/dailyreport/animal/AnimalApplicationTests.java
-  - src/Burocratico/src/test/java/com/gbv/dailyreport/burocratico/BurocraticoApplicationTests.java
-  - src/Cuidador/src/test/java/com/gbv/dailyreport/cuidador/CuidadorApplicationTests.java
-  - src/API/src/test/java/com/gbv/dailyreport/api/ApiApplicationTests.java
+  - src/test/java/com/gbv/dailyreport/AnimalControllerTest.java
+  - src/test/java/com/gbv/dailyreport/ReportControllerTest.java
+  - src/test/java/com/gbv/dailyreport/CuidadorControllerTest.java
+  - src/test/java/com/gbv/dailyreport/DailyreportApplicationTest.java
   
 fichero_tareas:
   - pom.xml
   
 entidad:
-  - src/Animal/src/main/java/com/gbv/dailyreport/animal/Animal.java
-  - src/Burocratico/src/main/java/com/gbv/dailyreport/burocratico/Report.java
-  - src/Cuidador/src/main/java/com/gbv/dailyreport/cuidador/Cuidador.java
+  - src/main/java/com/gbv/dailyreport/Animal.java
+  - src/main/java/com/gbv/dailyreport/Report.java
+  - src/main/java/com/gbv/dailyreport/Cuidador.java
   
