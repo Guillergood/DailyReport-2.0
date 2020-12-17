@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 //Clase que envuelve los datos relacionados con los Cuidadores
 
@@ -12,6 +14,7 @@ import javax.persistence.Entity;
 public class Cuidador {
     //Indica el id por el que se rige este objeto
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     private String name;
@@ -23,8 +26,7 @@ public class Cuidador {
         this.name = c.name;
     }
 
-    public Cuidador(int id, String name) {
-        super();
+    public Cuidador(int id,String name) {
         this.id = id;
         this.name = name;
     }
