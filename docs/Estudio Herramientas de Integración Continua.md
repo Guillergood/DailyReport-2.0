@@ -23,7 +23,7 @@ Para escoger las mejores opciones se han estudiado las siguientes herramientas d
 
 * [CircleCI](https://circleci.com/): Es una plataforma de integración continua y despliegue continuo. CircleCI fue nombrado líder en integración continua nativa de la nube por Forrester en 2019 y ha sido incluido en varias listas de Mejores herramientas de DevOps. CircleCI es la primera herramienta CI / CD en obtener la certificación FedRAMP y procesa más de 30 millones de compilaciones cada mes en entornos de compilación Linux, macOS, Docker y Windows.
 
- #### Comparativa
+### Comparativa
 
 En Jenkins, la compilación se alimenta a través de la interfaz de usuario de Jenkins, por lo que todas las configuraciones de tareas se mantienen en los archivos del sistema de Jenkins, principalmente en la base de datos de Jenkins, lo que dificulta el intercambio de información de configuración con el equipo o la organización. Github o dichos servidores de origen no pueden acceder a los datos contenidos en Jenkins.
 
