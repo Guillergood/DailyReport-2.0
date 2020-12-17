@@ -2,31 +2,25 @@ package com.gbv.dailyreport.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.gbv.dailyreport.model.Cuidador;
-import org.springframework.beans.BeanUtils;
+import com.gbv.dailyreport.service.impl.CuidadorServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class CuidadorController {
 
-    private final List<Cuidador> cuidadores = new ArrayList<>();
-    {
-        cuidadores.add(new Cuidador(1, "entity_1"));
-        cuidadores.add(new Cuidador(2, "entity_2"));
-        cuidadores.add(new Cuidador(3, "entity_3"));
-        cuidadores.add(new Cuidador(4, "entity_4"));
+    private final CuidadorServiceImpl cuidadorService;
+
+    public CuidadorController(CuidadorServiceImpl cuidadorService) {
+        this.cuidadorService = cuidadorService;
     }
-
-
-
     @RequestMapping("/dailyreport/cuidador/all")
     public List<Cuidador> findAll() {
-        return cuidadores;
+        return cuidadorService.getAll();
     }
 
     //Llamada GET que devuelve un cuidador
@@ -34,7 +28,7 @@ public class CuidadorController {
     public ResponseEntity<?> getCuidador(@PathVariable(value = "id") final int id) throws JsonProcessingException {
         Cuidador cuidador;
         try {
-            cuidador = cuidadores.get(id);
+            cuidador = cuidadorService.get(id);
         }
         catch (IndexOutOfBoundsException e){
             return ResponseEntity
@@ -42,6 +36,7 @@ public class CuidadorController {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body("Not found");
         }
+
         return ResponseEntity.ok(cuidador.serialize());
     }
 
@@ -49,7 +44,7 @@ public class CuidadorController {
     //Llamada POST que guarda un "Cuidador"
     @PostMapping(path= "/dailyreport/cuidador", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> postCuidador(@RequestBody final Cuidador cuidador) {
-        cuidadores.add(cuidador);
+        cuidadorService.add(cuidador);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -57,12 +52,12 @@ public class CuidadorController {
     }
 
     @PutMapping(value = "/dailyreport/cuidador/{id}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> update(@PathVariable("id") final int id, @RequestBody final Cuidador sourceCuidador) {
+    public ResponseEntity<?> update(@PathVariable("id") final int id, @RequestBody final Cuidador sourceCuidador) throws JsonProcessingException {
         Cuidador targetCuidador;
         try{
-            targetCuidador = cuidadores.get(id);
-            BeanUtils.copyProperties(sourceCuidador, targetCuidador, "id");
-            return new ResponseEntity<>(targetCuidador, HttpStatus.OK);
+            targetCuidador = cuidadorService.get(id);
+            cuidadorService.edit(id,sourceCuidador);
+            return new ResponseEntity<>(targetCuidador.serialize(), HttpStatus.OK);
         }
         catch (IndexOutOfBoundsException e){
             return ResponseEntity
@@ -79,7 +74,7 @@ public class CuidadorController {
     public ResponseEntity<?> deleteCuidador(@PathVariable(value= "id") final int id){
 
         try{
-            cuidadores.remove(cuidadores.get(id));
+            cuidadorService.delete(cuidadorService.get(id));
             return ResponseEntity.ok("Removed successfully");
         }
         catch (IndexOutOfBoundsException e){
@@ -89,5 +84,6 @@ public class CuidadorController {
                     .body("There is not an object like that to delete");
         }
     }
+
 
 }
