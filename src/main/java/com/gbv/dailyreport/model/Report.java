@@ -45,18 +45,6 @@ public class Report {
         return id;
     }
 
-    public String getKeeperName() {
-        return keeperName;
-    }
-
-    public String getAnimalName() {
-        return animalName;
-    }
-
-    public String getReport() {
-        return report;
-    }
-
     public void setId(int id) {
         this.id = id;
     }

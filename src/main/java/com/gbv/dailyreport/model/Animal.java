@@ -40,14 +40,6 @@ public class Animal {
 
     //Getter
 
-    public String getName() {
-        return name;
-    }
-
-    public boolean getChecked() {
-        return checked;
-    }
-
     public void setName(String name) {
         this.name = name;
     }

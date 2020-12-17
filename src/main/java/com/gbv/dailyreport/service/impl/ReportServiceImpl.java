@@ -17,21 +17,17 @@ public class ReportServiceImpl implements ReportService {
         this.reportRepository = reportRepository;
     }
 
-    @Override
-    public Report add(Report report) {
-        return reportRepository.save(report);
+    public void add(Report report) {
+        reportRepository.save(report);
     }
 
-    @Override
-    public Report edit(int id, Report report) {
+    public void edit(int id, Report report) {
         Report sourceReport = reportRepository.getOne(id);
         reportRepository.delete(sourceReport);
         reportRepository.save(report);
-        return report;
 
     }
 
-    @Override
     public Report get(int id) {
 
         if(reportRepository.existsById(id)){
@@ -43,13 +39,11 @@ public class ReportServiceImpl implements ReportService {
 
     }
 
-    @Override
     public List<Report> getAll() {
         return reportRepository.findAll();
     }
 
 
-    @Override
     public void delete(Report report) {
         reportRepository.delete(report);
     }

@@ -17,21 +17,17 @@ public class AnimalServiceImpl implements AnimalService {
         this.animalRepository = animalRepository;
     }
 
-    @Override
-    public Animal add(Animal animal) {
-        return animalRepository.save(animal);
+    public void add(Animal animal) {
+        animalRepository.save(animal);
     }
 
-    @Override
-    public Animal edit(int id, Animal animal) {
+    public void edit(int id, Animal animal) {
         Animal sourceAnimal = animalRepository.getOne(id);
         animalRepository.delete(sourceAnimal);
         animalRepository.save(animal);
-        return animal;
 
     }
 
-    @Override
     public Animal get(int id) {
 
         if(animalRepository.existsById(id)){
@@ -43,13 +39,11 @@ public class AnimalServiceImpl implements AnimalService {
 
     }
 
-    @Override
     public List<Animal> getAll() {
         return animalRepository.findAll();
     }
 
 
-    @Override
     public void delete(Animal animal) {
         animalRepository.delete(animal);
     }

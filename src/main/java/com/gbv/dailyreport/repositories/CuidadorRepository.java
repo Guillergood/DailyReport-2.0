@@ -16,7 +16,4 @@ import org.springframework.stereotype.Repository;
 
 */
 @Repository
-public interface CuidadorRepository extends JpaRepository<Cuidador,Integer> {
-    Cuidador findCuidadorById(int id);
-    void deleteCuidadorById(int id);
-}
+public interface CuidadorRepository extends JpaRepository<Cuidador,Integer> {}

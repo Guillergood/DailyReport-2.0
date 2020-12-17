@@ -3,7 +3,6 @@ package com.gbv.dailyreport.repositories;
 
 import com.gbv.dailyreport.model.Animal;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 /*
      Interfaz que define los metodos que se utilizaran para el repositorio de mongo
@@ -17,6 +16,4 @@ import org.springframework.stereotype.Repository;
 */
 
 public interface AnimalRepository extends JpaRepository<Animal,Integer> {
-    Animal findAnimalById(int id);
-    void deleteAnimalById(int id);
 }

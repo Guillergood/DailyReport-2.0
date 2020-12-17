@@ -17,21 +17,17 @@ public class CuidadorServiceImpl implements CuidadorService {
         this.cuidadorRepository = cuidadorRepository;
     }
 
-    @Override
-    public Cuidador add(Cuidador cuidador) {
-        return cuidadorRepository.save(cuidador);
+    public void add(Cuidador cuidador) {
+        cuidadorRepository.save(cuidador);
     }
 
-    @Override
-    public Cuidador edit(int id, Cuidador cuidador) {
+    public void edit(int id, Cuidador cuidador) {
         Cuidador sourceCuidador = cuidadorRepository.getOne(id);
         cuidadorRepository.delete(sourceCuidador);
         cuidadorRepository.save(cuidador);
-        return cuidador;
 
     }
 
-    @Override
     public Cuidador get(int id) {
 
         if(cuidadorRepository.existsById(id)){
@@ -43,13 +39,11 @@ public class CuidadorServiceImpl implements CuidadorService {
 
     }
 
-    @Override
     public List<Cuidador> getAll() {
         return cuidadorRepository.findAll();
     }
 
 
-    @Override
     public void delete(Cuidador cuidador) {
         cuidadorRepository.delete(cuidador);
     }

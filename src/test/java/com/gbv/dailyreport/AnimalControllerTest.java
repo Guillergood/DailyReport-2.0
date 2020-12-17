@@ -153,7 +153,7 @@ public class AnimalControllerTest {
     //Metodo para eliminar un animal de la colecccion
     @Test
     public void delete_withExistingData_shouldReturnOk() throws Exception {
-        final ResultActions result = this.mvc.perform(MockMvcRequestBuilders
+        this.mvc.perform(MockMvcRequestBuilders
                 .delete("/dailyreport/animal/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
