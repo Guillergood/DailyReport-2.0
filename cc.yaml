@@ -1,14 +1,12 @@
-lenguaje:
-  - java
-  
+lenguaje: java
+
 test:
   - src/test/java/com/gbv/dailyreport/AnimalControllerTest.java
   - src/test/java/com/gbv/dailyreport/ReportControllerTest.java
   - src/test/java/com/gbv/dailyreport/CuidadorControllerTest.java
   - src/test/java/com/gbv/dailyreport/DailyreportApplicationTest.java
   
-fichero_tareas:
-  - pom.xml
+fichero_tareas: pom.xml
   
 entidad:
   - src/main/java/com/gbv/dailyreport/model/Animal.java
