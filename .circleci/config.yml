@@ -5,8 +5,8 @@ jobs:
             - image: guillergood/dailyreport-2.0:latest
         steps:
             - checkout
-            # Ejecuta la orden verify de maven
-            - run: mvn verify
+            # Ejecuta la orden test de maven
+            - run: mvn test
 
 workflows:
     test_dailyreport:
