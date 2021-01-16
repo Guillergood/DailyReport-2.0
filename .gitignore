@@ -30,6 +30,11 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+.gradle
+/.gradle
+gradlew
+gradlew.bat
+gradle
 
 ### STS ###
 .apt_generated

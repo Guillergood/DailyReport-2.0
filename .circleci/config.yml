@@ -6,7 +6,7 @@ jobs:
         steps:
             - checkout
             # Ejecuta la orden test de maven
-            - run: mvn test
+            - run: gradle test
 
 workflows:
     test_dailyreport:

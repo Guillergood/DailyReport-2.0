@@ -2,6 +2,4 @@ task:
   name: Cirrus CI
   container:
     image: ghcr.io/guillergood/dailyreport-2.0:latest
-  maven_cache:
-    folder: ~/.m2
-  test_script: mvn test -B
+  test_script: gradle test
