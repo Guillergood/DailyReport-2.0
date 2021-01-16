@@ -14,7 +14,7 @@ Nuevo
 
 ---
 
-La aplicación tiene las siguientes rutas
+La aplicación tiene las siguientes rutas:
 
 ## Animal
 
@@ -28,6 +28,14 @@ PUT `/dailyreport/animal/{id}`, que modifica un animal existente por otro dado, 
 
 DELETE `/dailyreport/animal/{id}`, que elimina un animal, si no existe previamente devuelve un código no content (204).
 
+Deducidas de las siguientes HU:
+
+[Consultar Animales](https://github.com/Guillergood/DailyReport-2.0/issues/62)
+[Eliminar Animales](https://github.com/Guillergood/DailyReport-2.0/issues/59)
+[Editar Animales](https://github.com/Guillergood/DailyReport-2.0/issues/56)
+[Crear Animales](https://github.com/Guillergood/DailyReport-2.0/issues/53)
+
+
 ## Cuidador
 
 GET `/dailyreport/cuidador/all` , que devuelve toda la colección cuidador .
@@ -40,6 +48,14 @@ PUT `/dailyreport/cuidador/{id}`, que modifica un cuidador existente por otro da
 
 DELETE `/dailyreport/cuidador/{id}`, que elimina un cuidador, si no existe previamente devuelve un código no content (204).
 
+Deducidas de las siguientes HU:
+
+[Consultar Cuidador](https://github.com/Guillergood/DailyReport-2.0/issues/64)
+[Eliminar Cuidador](https://github.com/Guillergood/DailyReport-2.0/issues/61)
+[Editar Cuidador](https://github.com/Guillergood/DailyReport-2.0/issues/58)
+[Crear Cuidadores](https://github.com/Guillergood/DailyReport-2.0/issues/55)
+
+
 ## Report
 
 GET `/dailyreport/report/all` , que devuelve toda la colección report .
@@ -51,6 +67,13 @@ POST `/dailyreport/report/` , que añade un report a la colección report .
 PUT `/dailyreport/report/{id}`, que modifica un report existente por otro dado, si no existe previamente devuelve un código no content (204).
 
 DELETE `/dailyreport/report/{id}`, que elimina un report, si no existe previamente devuelve un código no content (204).
+
+Deducidas de las siguientes HU:
+
+[Eliminar Informes](https://github.com/Guillergood/DailyReport-2.0/issues/60)
+[Consultar Informes](https://github.com/Guillergood/DailyReport-2.0/issues/63)
+[Editar Informes](https://github.com/Guillergood/DailyReport-2.0/issues/57)
+[Crear Informes](https://github.com/Guillergood/DailyReport-2.0/issues/54)
 
 
 Este diseño se ha implementado bajo el siguiente [estándar](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
