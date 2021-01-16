@@ -5,7 +5,9 @@ import com.gbv.dailyreport.model.Cuidador;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -21,13 +23,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(CuidadorController.class)
+@ComponentScan
+@AutoConfigureDataJpa
 public class CuidadorControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
-    public void getAllCuidadores() throws Exception {
+    public void getAllCuidadors() throws Exception {
         mvc.perform(MockMvcRequestBuilders
                 .get("/dailyreport/cuidador/all")
                 .accept(MediaType.APPLICATION_JSON))
@@ -37,7 +41,7 @@ public class CuidadorControllerTest {
     }
 
     @Test
-    public void getCuidadores_invalidAcceptHeader_shouldReturnNotAcceptable() throws Exception {
+    public void getCuidadors_invalidAcceptHeader_shouldReturnNotAcceptable() throws Exception {
         // Given
         final String invalidAcceptMimeType = MimeTypeUtils.APPLICATION_XML_VALUE;
 
@@ -111,6 +115,7 @@ public class CuidadorControllerTest {
 
         String sourceCuidadorString = sourceCuidador.andReturn().getResponse().getContentAsString();
         Cuidador modifiedCuidador = new Cuidador(sourceCuidadorString);
+        modifiedCuidador.setId(100);
         modifiedCuidador.setName("changed");
 
         Assert.notNull(modifiedCuidador.toString(),"Cuidador is null");
@@ -130,7 +135,7 @@ public class CuidadorControllerTest {
     //Metodo para añadir un cuidador a la colecccion
     @Test
     public void addCuidador_withExistingData_shouldReturnOk() throws Exception {
-        Cuidador cuidador = new Cuidador(40, "Alan");
+        Cuidador cuidador = new Cuidador(40, "Keeper");
 
         this.mvc.perform(MockMvcRequestBuilders
                 .post("/dailyreport/cuidador/")
@@ -147,7 +152,7 @@ public class CuidadorControllerTest {
     @Test
     public void delete_withExistingData_shouldReturnOk() throws Exception {
         this.mvc.perform(MockMvcRequestBuilders
-                .delete("/dailyreport/cuidador/0")
+                .delete("/dailyreport/cuidador/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
@@ -157,7 +162,7 @@ public class CuidadorControllerTest {
     @Test
     public void delete_withBadId_shouldReturnNoContent() throws Exception {
         this.mvc.perform(MockMvcRequestBuilders
-                .delete("/dailyreport/cuidador/100")
+                .delete("/dailyreport/cuidador/101")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNoContent());
@@ -165,6 +170,4 @@ public class CuidadorControllerTest {
     }
 
 
-
 }
-

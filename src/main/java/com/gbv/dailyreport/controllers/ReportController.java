@@ -2,31 +2,25 @@ package com.gbv.dailyreport.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.gbv.dailyreport.model.Report;
-import org.springframework.beans.BeanUtils;
+import com.gbv.dailyreport.service.impl.ReportServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class ReportController {
 
-    //Se dice a la aplicacion el repositorio mongo es el siguiente y que lo autoconfigure
-    private final List<Report> reports = new ArrayList<>();
-    {
+    private final ReportServiceImpl reportService;
 
-        reports.add(new Report(1,"name_1","animal_1","hello"));
-        reports.add(new Report(2,"name_2","animal_2","hello"));
-        reports.add(new Report(3,"name_3","animal_3","hello"));
-        reports.add(new Report(4,"name_4","animal_4","hello"));
+    public ReportController(ReportServiceImpl reportService) {
+        this.reportService = reportService;
     }
-
     @RequestMapping("/dailyreport/report/all")
     public List<Report> findAll() {
-        return reports;
+        return reportService.getAll();
     }
 
     //Llamada GET que devuelve un report
@@ -34,7 +28,7 @@ public class ReportController {
     public ResponseEntity<?> getReport(@PathVariable(value = "id") final int id) throws JsonProcessingException {
         Report report;
         try {
-            report = reports.get(id);
+            report = reportService.get(id);
         }
         catch (IndexOutOfBoundsException e){
             return ResponseEntity
@@ -42,6 +36,7 @@ public class ReportController {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body("Not found");
         }
+
         return ResponseEntity.ok(report.serialize());
     }
 
@@ -49,7 +44,7 @@ public class ReportController {
     //Llamada POST que guarda un "Report"
     @PostMapping(path= "/dailyreport/report", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> postReport(@RequestBody final Report report) {
-        reports.add(report);
+        reportService.add(report);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -57,13 +52,12 @@ public class ReportController {
     }
 
     @PutMapping(value = "/dailyreport/report/{id}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> update(@PathVariable("id") final int id, @RequestBody final Report sourceReport) {
+    public ResponseEntity<?> update(@PathVariable("id") final int id, @RequestBody final Report sourceReport) throws JsonProcessingException {
         Report targetReport;
-
-        try {
-            targetReport = reports.get(id);
-            BeanUtils.copyProperties(sourceReport, targetReport, "id");
-            return new ResponseEntity<>(targetReport, HttpStatus.OK);
+        try{
+            targetReport = reportService.get(id);
+            reportService.edit(id,sourceReport);
+            return new ResponseEntity<>(targetReport.serialize(), HttpStatus.OK);
         }
         catch (IndexOutOfBoundsException e){
             return ResponseEntity
@@ -80,7 +74,7 @@ public class ReportController {
     public ResponseEntity<?> deleteReport(@PathVariable(value= "id") final int id){
 
         try{
-            reports.remove(reports.get(id));
+            reportService.delete(reportService.get(id));
             return ResponseEntity.ok("Removed successfully");
         }
         catch (IndexOutOfBoundsException e){
@@ -90,5 +84,6 @@ public class ReportController {
                     .body("There is not an object like that to delete");
         }
     }
+
 
 }

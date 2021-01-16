@@ -5,7 +5,9 @@ import com.gbv.dailyreport.model.Report;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -21,15 +23,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ReportController.class)
+@ComponentScan
+@AutoConfigureDataJpa
 public class ReportControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
-    public void getAllReports() throws Exception
-    {
-        mvc.perform( MockMvcRequestBuilders
+    public void getAllReports() throws Exception {
+        mvc.perform(MockMvcRequestBuilders
                 .get("/dailyreport/report/all")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -43,7 +46,7 @@ public class ReportControllerTest {
         final String invalidAcceptMimeType = MimeTypeUtils.APPLICATION_XML_VALUE;
 
         // When
-        final ResultActions result = mvc.perform( MockMvcRequestBuilders
+        final ResultActions result = mvc.perform(MockMvcRequestBuilders
                 .get("/dailyreport/report/all")
                 .accept(invalidAcceptMimeType));
 
@@ -89,9 +92,9 @@ public class ReportControllerTest {
 
         String sourceReportString = sourceReport.andReturn().getResponse().getContentAsString();
         Report modifiedReport = new Report(sourceReportString);
-        modifiedReport.setAnimalName("changed");
-        modifiedReport.setKeeperName("changed");
         modifiedReport.setReport("changed");
+        modifiedReport.setKeeperName("changed");
+        modifiedReport.setAnimalName("changed");
         // When
         final ResultActions result = mvc.perform(MockMvcRequestBuilders
                 .put("/dailyreport/report/".concat(Integer.toString(mockedId)))
@@ -114,9 +117,10 @@ public class ReportControllerTest {
 
         String sourceReportString = sourceReport.andReturn().getResponse().getContentAsString();
         Report modifiedReport = new Report(sourceReportString);
-        modifiedReport.setAnimalName("changed");
-        modifiedReport.setKeeperName("changed");
+        modifiedReport.setId(100);
         modifiedReport.setReport("changed");
+        modifiedReport.setKeeperName("changed");
+        modifiedReport.setAnimalName("changed");
 
         Assert.notNull(modifiedReport.toString(),"Report is null");
 
@@ -135,7 +139,7 @@ public class ReportControllerTest {
     //Metodo para añadir un report a la colecccion
     @Test
     public void addReport_withExistingData_shouldReturnOk() throws Exception {
-        Report report = new Report(6,"name_1","animal_1","hello");
+        Report report = new Report(40,"keeper","animal","hello");
 
         this.mvc.perform(MockMvcRequestBuilders
                 .post("/dailyreport/report/")
@@ -152,17 +156,16 @@ public class ReportControllerTest {
     @Test
     public void delete_withExistingData_shouldReturnOk() throws Exception {
         this.mvc.perform(MockMvcRequestBuilders
-                .delete("/dailyreport/report/0")
+                .delete("/dailyreport/report/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
-
     }
 
     @Test
     public void delete_withBadId_shouldReturnNoContent() throws Exception {
         this.mvc.perform(MockMvcRequestBuilders
-                .delete("/dailyreport/report/100")
+                .delete("/dailyreport/report/101")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNoContent());
@@ -171,4 +174,3 @@ public class ReportControllerTest {
 
 
 }
-

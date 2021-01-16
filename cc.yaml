@@ -1,5 +1,5 @@
 lenguaje: java
-  
+
 test:
   - src/test/java/com/gbv/dailyreport/AnimalControllerTest.java
   - src/test/java/com/gbv/dailyreport/ReportControllerTest.java

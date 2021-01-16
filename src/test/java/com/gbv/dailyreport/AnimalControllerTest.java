@@ -5,7 +5,9 @@ import com.gbv.dailyreport.model.Animal;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -21,6 +23,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(AnimalController.class)
+@ComponentScan
+@AutoConfigureDataJpa
 public class AnimalControllerTest {
 
     @Autowired
@@ -112,6 +116,7 @@ public class AnimalControllerTest {
 
         String sourceAnimalString = sourceAnimal.andReturn().getResponse().getContentAsString();
         Animal modifiedAnimal = new Animal(sourceAnimalString);
+        modifiedAnimal.setId(100);
         modifiedAnimal.setChecked(true);
         modifiedAnimal.setName("changed");
 
@@ -149,7 +154,7 @@ public class AnimalControllerTest {
     @Test
     public void delete_withExistingData_shouldReturnOk() throws Exception {
         this.mvc.perform(MockMvcRequestBuilders
-                .delete("/dailyreport/animal/0")
+                .delete("/dailyreport/animal/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
@@ -159,7 +164,7 @@ public class AnimalControllerTest {
     @Test
     public void delete_withBadId_shouldReturnNoContent() throws Exception {
         this.mvc.perform(MockMvcRequestBuilders
-                .delete("/dailyreport/animal/100")
+                .delete("/dailyreport/animal/101")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNoContent());
@@ -168,4 +173,3 @@ public class AnimalControllerTest {
 
 
 }
-

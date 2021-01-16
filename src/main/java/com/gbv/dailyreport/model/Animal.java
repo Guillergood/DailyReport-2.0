@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 
 //Clase que envuelve los datos relacionados con los Animales
@@ -13,6 +15,7 @@ import javax.persistence.Entity;
 public class Animal {
     //Indica el id por el que se rige este objeto
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     private String name;
@@ -26,8 +29,7 @@ public class Animal {
         this.checked = c.checked;
     }
 
-    public Animal(int id, String name, boolean checked) {
-        super();
+    public Animal(int id,String name, boolean checked) {
         this.id = id;
         this.name = name;
         this.checked = checked;
@@ -37,14 +39,6 @@ public class Animal {
     public Animal() {}
 
     //Getter
-
-    public String getName() {
-        return name;
-    }
-
-    public boolean isChecked() {
-        return checked;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -77,5 +71,13 @@ public class Animal {
     @javax.persistence.Id
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean getChecked() {
+        return checked;
     }
 }

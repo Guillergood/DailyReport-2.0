@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 //Clase que envuelve los datos relacionados con los Reports
 
@@ -12,6 +14,7 @@ import javax.persistence.Entity;
 public class Report {
     //Indica el id por el que se rige este objeto
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String keeperName;
     private String animalName;
@@ -42,18 +45,6 @@ public class Report {
         return id;
     }
 
-    public String getKeeperName() {
-        return keeperName;
-    }
-
-    public String getAnimalName() {
-        return animalName;
-    }
-
-    public String getReport() {
-        return report;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -68,6 +59,18 @@ public class Report {
 
     public void setReport(String report) {
         this.report = report;
+    }
+
+    public String getKeeperName() {
+        return keeperName;
+    }
+
+    public String getAnimalName() {
+        return animalName;
+    }
+
+    public String getReport() {
+        return report;
     }
 
     //Serializador
