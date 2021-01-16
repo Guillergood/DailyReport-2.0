@@ -31,14 +31,12 @@ https://guillergood.github.io/DailyReport-2.0
 
 # Construcción del proyecto
 
-Para instalar las dependencias, se utiliza ```mvn install```.
+Para instalar las dependencias, se utiliza ```gradle install```.
 
-Para compilar el proyecto, se utiliza ```mvn compile``` .
+Para compilar el proyecto, se utiliza ```gradle build``` .
 
-Para probar el proyecto, se utiliza ```mvn test``` .
+Para probar el proyecto, se utiliza ```gradle test``` .
 
-Para compilar y probar, se utiliza ```mvn package```.
+Para poner en marcha el servidor se utiliza ```gradle bootRun```.
 
-Para poner en marcha el servidor se utiliza ```mvn spring-boot:run```.
-
-Para borrar los archivos compilados y en caché se utiliza Para poner en marcha el servidor se utiliza ```mvn clean```.
+Para borrar los archivos compilados y en caché se utiliza Para poner en marcha el servidor se utiliza ```gradle clean```.
