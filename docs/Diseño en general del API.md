@@ -19,26 +19,38 @@ La aplicación tiene las siguientes rutas
 ## Animal
 
 GET `/dailyreport/animal/all` , que devuelve toda la colección animal.
-GET `/dailyreport/animal/{id}` , que devuelve el animal en cuestion o si no devuelve un código not found (404).
-POST `/dailyreport/animal/` , que añade un animal a la colección animal.
-PUT `/dailyreport/animal/{id}`, que modifica un animal existente por otro dado, si no existe previamente devuelve un código no content (204)
-DELETE `/dailyreport/animal/{id}`, que elimina un animal, si no existe previamente devuelve un código no content (204)
+
+GET `/dailyreport/animal/{id}` , que devuelve el animal en cuestion o si no devuelve un código not found (404) .
+
+POST `/dailyreport/animal/` , que añade un animal a la colección animal .
+
+PUT `/dailyreport/animal/{id}`, que modifica un animal existente por otro dado, si no existe previamente devuelve un código no content (204).
+
+DELETE `/dailyreport/animal/{id}`, que elimina un animal, si no existe previamente devuelve un código no content (204).
 
 ## Cuidador
 
-GET `/dailyreport/cuidador/all` , que devuelve toda la colección cuidador.
-GET `/dailyreport/cuidador/{id}` , que devuelve el cuidador en cuestion o si no devuelve un código not found (404).
-POST `/dailyreport/cuidador/` , que añade un cuidador a la colección cuidador.
-PUT `/dailyreport/cuidador/{id}`, que modifica un cuidador existente por otro dado, si no existe previamente devuelve un código no content (204)
-DELETE `/dailyreport/cuidador/{id}`, que elimina un cuidador, si no existe previamente devuelve un código no content (204)
+GET `/dailyreport/cuidador/all` , que devuelve toda la colección cuidador .
+
+GET `/dailyreport/cuidador/{id}` , que devuelve el cuidador en cuestion o si no devuelve un código not found (404) .
+
+POST `/dailyreport/cuidador/` , que añade un cuidador a la colección cuidador .
+
+PUT `/dailyreport/cuidador/{id}`, que modifica un cuidador existente por otro dado, si no existe previamente devuelve un código no content (204).
+
+DELETE `/dailyreport/cuidador/{id}`, que elimina un cuidador, si no existe previamente devuelve un código no content (204).
 
 ## Report
 
-GET `/dailyreport/report/all` , que devuelve toda la colección report.
-GET `/dailyreport/report/{id}` , que devuelve el report en cuestion o si no devuelve un código not found (404).
-POST `/dailyreport/report/` , que añade un report a la colección report.
-PUT `/dailyreport/report/{id}`, que modifica un report existente por otro dado, si no existe previamente devuelve un código no content (204)
-DELETE `/dailyreport/report/{id}`, que elimina un report, si no existe previamente devuelve un código no content (204)
+GET `/dailyreport/report/all` , que devuelve toda la colección report .
+
+GET `/dailyreport/report/{id}` , que devuelve el report en cuestion o si no devuelve un código not found (404) .
+
+POST `/dailyreport/report/` , que añade un report a la colección report .
+
+PUT `/dailyreport/report/{id}`, que modifica un report existente por otro dado, si no existe previamente devuelve un código no content (204).
+
+DELETE `/dailyreport/report/{id}`, que elimina un report, si no existe previamente devuelve un código no content (204).
 
 
 Con las siguientes pruebas correspondientes:

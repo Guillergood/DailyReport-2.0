@@ -19,7 +19,7 @@ Spring usa Commons Logging, usando por defecto Logback, si bien incluye también
 
 Por defecto Spring Boot, muestra los mensajes de nivel ERROR-level, WARN-level, and INFO-level pero esto se puede cambiar de diferentes maneras.
 
-La mas simple es añadiendo el parámetro --trace o --debugcuando ejecutemos nuestro programa.
+La más simple es añadiendo el parámetro --trace o --debug cuando ejecutemos el programa.
 
 ```
 java -jar APP.JAR –debug
@@ -31,13 +31,13 @@ Otra manera será especificar en la propiedad ‘logging.level.root’. Esto lo 
 java -jar -Dlogging.level.root=DEBUG APP.JAR
 ```
 
-Una vez más si usamos maven para ejecutar el proceso podremos poner el siguiente comando:
+Y la última que utilizo es, ejecutar el siguiente comando:
 
 ```
 mvn spring-boot:run -Dspring-boot.run.arguments=-logging.level.root=TRACE
 ```
 
-Por supuesto, se permite especificar niveles de logging por paquetes, así, si queremos que nuestra aplicación que esta en el paquete "com.gbv.dailyreport" muestre los mensajes de nivel debug, pero el resto de aplicaciones solo muestren los mensajes de error, escribiríamos:
+Por supuesto, se permite especificar niveles de logging por paquetes, así, si se quiere que la aplicación que esta en el paquete "com.gbv.dailyreport" muestre los mensajes de nivel debug, pero el resto de aplicaciones solo muestren los mensajes de error, se puede escribir:
 
 ```
 java -jar -Dlogging.level.root=ERROR -D-Dlogging.level.com.gbv.dailyreport=DEBUG APP.JAR

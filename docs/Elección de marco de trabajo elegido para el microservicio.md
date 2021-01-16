@@ -13,7 +13,7 @@ Nuevo
 
 
 ---
-### 1. Spring
+## Spring
 
 Con su concepto de inyección de dependencia y características de programación orientadas a aspectos, Spring tomó el desarrollo mundo por sorpresa. Es un marco de trabajo de código abierto utilizado para aplicaciones empresariales.
 
@@ -30,7 +30,7 @@ Con todo configurado, el código es limpio y fácil de comprender.
 - Tiene una extensa documentación y tutoriales en su página web oficial.
 - Se puede crear aplicaciones rápidamente con su plugin en el IDE Intellij IDEA.
 
-### 2. Struts
+## Struts
 
 
 Apache Struts es otro sólido marco de trabajo de código abierto para aplicaciones web. Sigue el modelo MVC (Model-View-Controller) y extiende la API JSP. En un enfoque tradicional servlet-JSP, si un usuario envía un formulario con sus detalles, la información va a un servlet para su procesamiento o el control pasa al siguiente JSP (Java Server Pages – donde puede escribir código Java en un HTML). Esto se vuelve confuso para aplicaciones complejas, ya que la capa 'View' o la capa de presentación no debería tener lógica de negocio.
@@ -43,7 +43,7 @@ La vista se mantiene mediante un amplio conjunto de bibliotecas de etiquetas.
 
 Los struts son fáciles de configurar y proporcionan mucha más flexibilidad y extensibilidad sobre el enfoque MVC tradicional utilizando servlets y JSP solo. Puede ser un buen punto de partida para su carrera como desarrollador web.
 
-### 3. Hibernate
+## Hibernate
 
 
 Aunque Hibernate no es un marco de trabajo completo. Implementa Java Persistence API (JPA). Hibernate es una base de datos de asignación relacional de objetos (ORM) para aplicaciones Java. Al igual que SQL, las consultas en Hibernate se denominan HQL (Lenguaje de consulta de Hibernate).
@@ -56,7 +56,7 @@ Hibernate resuelve los dos principales problemas con JDBC: JDBC no admite relaci
 
 Hibernate proporciona una capa de abstracción para que el código se combine libremente con la base de datos. Cosas como establecer una conexión de base de datos, realizar operaciones CRUD son atendidos por Hibernate, por lo que los desarrolladores no necesitan implementar eso, por lo tanto, hace que el código sea independiente de la base de datos utilizada.
 
-### 4. Apache Wicket
+## Apache Wicket
 
 Un simple marco de trabajo web, Wicket tiene una estructura orientada a componentes y todo lo que se necesita saber es Java y HTML.
 
@@ -64,7 +64,7 @@ La característica principal de Wicket es el modelo POJO en el que los component
 
 Wicket es ligero y puede crear aplicaciones muy rápido. También es sencillo crear pruebas unitarias bajo este marco de trabajo.
 
-### 5. JSF
+## JSF
 
 Es un marco MVC basado en componentes y tiene componentes de interfaz de usuario reutilizables para aplicaciones basadas en servidor. La idea principal es encapsular varias tecnologías del lado cliente como CSS, JavaScript y HTML que permitirán a los desarrolladores crear la interfaz de usuario sin conocer ninguna de estas tecnologías en profundidad. Solo pueden arrastrar y soltar componentes de la interfaz de usuario y centrarse más en los detalles de la capa de presentación.
 
@@ -72,7 +72,7 @@ El sistema de plantillas predeterminado en JSF es FaceLets. JSF es bastante simi
 
 JSF se puede integrar sin problemas con componentes habilitados para AJAX para enriquecer la experiencia del usuario mediante la adición de eventos Ajax para validaciones e invocaciones de métodos.
 
-### 6. Dropwizard
+## Dropwizard
 
 Este marco de trabajo ligero permite completar una aplicación muy rápido debido a su compatibilidad inmediata con configuraciones avanzadas, registro, métricas de aplicaciones y mucho más. Puede crear aplicaciones web RESTful que ofrezcan un alto rendimiento, sean estables y fiables.
 
@@ -82,7 +82,7 @@ Dado que hay bibliotecas integradas para todas las configuraciones, tareas relac
 
 Dropwizard es un marco de trabajo de código abierto que se incluye con bibliotecas y se puede configurar fácilmente con Eclipse IDE.
 
-### 7. Grails
+## Grails
 
 Grails es un marco de trabajo web escrito en lenguaje de programación Groovy, se ejecuta en la plataforma Java y es perfectamente compatible con la sintaxis Java. Este marco de trabajo se basa en el patrón de diseño MVC.
 
@@ -90,7 +90,7 @@ Groovy es similar a Java que algunas características más añadidas en comparac
 
 Al igual que JSP, en Grails, la tecnología de renderizado es GSP (Groovy Server Pages). Crear etiquetas para la vista en Grails es simple y fácil.  Se puede integrar un código en Java existente con Grails.
 
-### 8. Atg
+## Atg
 
 ATG es una plataforma de comercio web escrita en Java. Es un marco de trabajo personalizable y configurable, especialmente útil para sitios web relacionados con el comercio electrónico. El producto es propiedad de Oracle y es compatible con aplicaciones B2B y B2C que son complejas y enormes. Sin embargo, para aplicaciones a pequeña escala, podría ser demasiado costoso.
 
