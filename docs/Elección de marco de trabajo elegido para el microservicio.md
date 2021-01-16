@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: Elección de marco de trabajo elegido para el microservicio

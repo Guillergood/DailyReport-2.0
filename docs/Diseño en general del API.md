@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: Diseño en general del API
