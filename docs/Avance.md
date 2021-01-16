@@ -14,292 +14,178 @@ Nuevo
 
 Se ha avanzado en los siguientes puntos:
 
-[Se ha realizado una limpieza de archivos](https://github.com/Guillergood/DailyReport-2.0/issues/69), donde se han borrado archivos innecesarios
+[No se pueden meter datos en la definición de la clase.](https://github.com/Guillergood/DailyReport-2.0/issues/77)
 
-[Se ha realizado la orquestación de los diferentes servicios con docker-compose](https://github.com/Guillergood/DailyReport-2.0/issues/66):
+Ahora cada controlador tiene sus datos introducidos en una clase aparte, como recomiendan en la documentación de Spring:
 
-### Docker Compose
+```java
+package com.gbv.dailyreport;
 
-Además como trabajo adicional, se ha configurado la orquestación de los servicios con `docker-compose`, donde se han definido los diferentes servicios a orquestar:
+import com.gbv.dailyreport.model.Cuidador;
+import com.gbv.dailyreport.model.Report;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.gbv.dailyreport.model.Animal;
+import com.gbv.dailyreport.repositories.AnimalRepository;
+import com.gbv.dailyreport.repositories.CuidadorRepository;
+import com.gbv.dailyreport.repositories.ReportRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-### Dockerfile de Animal
 
-```bash
-FROM adoptopenjdk/maven-openjdk11
-WORKDIR .
-COPY /src /Animal/src
-COPY /pom.xml /Animal
-RUN cd Animal && mvn clean package -DskipTests && cd .. && cp ./Animal/target/Animal-0.0.1-SNAPSHOT.jar ./app.jar &&  rm -rf ./Animal
-CMD ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "./app.jar"]
+@Configuration
+class LoadDatabase {
 
-EXPOSE 8080
-```
+    private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
-### Dockerfile de Api
+    @Bean
+    CommandLineRunner initDatabase(AnimalRepository animalRepository, ReportRepository reportRepository,
+                                   CuidadorRepository cuidadorRepository) {
 
-```bash
-FROM adoptopenjdk/maven-openjdk11
-COPY /src /API/src
-COPY /pom.xml /API
-CMD ["mvn","test"]
-```
+        return args -> {
+            log.info("Preloading Animal 1 " + animalRepository.save(new Animal(1,"entity_1", false)));
+            log.info("Preloading Animal 2 " + animalRepository.save(new Animal(2,"entity_2", false)));
+            log.info("Preloading Animal 3 " + animalRepository.save(new Animal(3,"entity_3", false)));
+            log.info("Preloading Animal 4 " + animalRepository.save(new Animal( 4,"entity_4", false)));
 
-### Dockerfile de Burocratico
+            log.info("Preloading Cuidador 1 " + cuidadorRepository.save(new Cuidador(1,"name_1")));
+            log.info("Preloading Cuidador 2 " + cuidadorRepository.save(new Cuidador(2,"name_2")));
+            log.info("Preloading Cuidador 3 " + cuidadorRepository.save(new Cuidador(3,"name_3")));
+            log.info("Preloading Cuidador 4 " + cuidadorRepository.save(new Cuidador(4,"name_4")));
 
-```bash
-FROM adoptopenjdk/maven-openjdk11
-COPY /src /Burocratico/src
-COPY /pom.xml /Burocratico
-RUN cd Burocratico && mvn clean package -DskipTests && cd .. && cp ./Burocratico/target/Burocratico-0.0.1-SNAPSHOT.jar ./app.jar &&  rm -rf ./Burocratico
-CMD ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "./app.jar"]
-
-EXPOSE 8081
-```
-
-### Dockerfile de Cuidador
-
-```bash
-FROM adoptopenjdk/maven-openjdk11
-COPY /src /Cuidador/src
-COPY /pom.xml /Cuidador
-RUN cd Cuidador && mvn clean package -DskipTests && cd .. && cp ./Cuidador/target/Cuidador-0.0.1-SNAPSHOT.jar ./app.jar &&  rm -rf ./Cuidador
-CMD ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "./app.jar"]
-
-EXPOSE 8082
+            log.info("Preloading Report 1 " + reportRepository.save(new Report(1,"name_1","animal_1","hello")));
+            log.info("Preloading Report 2 " + reportRepository.save(new Report(2,"name_2","animal_2","hello")));
+            log.info("Preloading Report 3 " + reportRepository.save(new Report(3,"name_3","animal_3","hello")));
+            log.info("Preloading Report 4 " + reportRepository.save(new Report(4,"name_4","animal_4","hello")));
+        };
+    }
+}
 ```
 
 
 
-- Una base de datos para cada servicio`mongoanimal`, `mongocuidador`, `mongoburocratico` y`mongoapi` :
+[La lógica de negocio debe estar desacoplada de su publicación en un API](https://github.com/Guillergood/DailyReport-2.0/issues/78) 
 
-  ```yaml
-    mongoanimal:
-      image: 'bitnami/mongodb:latest'
-      container_name: "mongoanimal"
-      ports:
-        - '27017:27017'
-    mongocuidador:
-      image: 'bitnami/mongodb:latest'
-      container_name: "mongocuidador"
-      ports:
-        - '27018:27017'
-    mongoburocratico:
-      image: 'bitnami/mongodb:latest'
-      container_name: "mongoburocratico"
-      ports:
-        - '27019:27017'
-    mongoapi:
-      image: 'bitnami/mongodb:latest'
-      container_name: "mongoapi"
-      ports:
-        - '27020:27017'
-        
-  ```
-  
-- Y un apartado para cada servicio donde tiene sus diferentes características`animal`, `cuidador`, `burocratico` y`api` :
+[La lógica de negocio básica debe estar separada de cualquier dependencia de un framework](https://github.com/Guillergood/DailyReport-2.0/issues/79) 
 
-  ```yaml
-  animal:
-      build: ./src/Animal
-      image: dailyreport-animal
-      container_name: "animal"
-      links:
-        - mongoanimal
-      environment:
-        - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8080
-        - MONGODB_HOST=mongoanimal
-        - MONGODB_PORT=27017
-  
-      depends_on:
-        - mongoanimal
-      ports:
-        - "8080:8080"
-    cuidador:
-      build: ./src/Cuidador
-      image: dailyreport-cuidador
-      container_name: "cuidador"
-      links:
-        - mongocuidador
-      environment:
-        - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8082
-        - MONGODB_HOST=mongocuidador
-        - MONGODB_PORT=27017
-  
-      depends_on:
-        - mongocuidador
-      ports:
-        - "8082:8082"
-  
-    burocratico:
-      build: ./src/Burocratico
-      image: dailyreport-burocratico
-      container_name: "burocratico"
-      links:
-        - mongoburocratico
-      environment:
-        - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8081
-        - MONGODB_HOST=mongoburocratico
-        - MONGODB_PORT=27017
-  
-      depends_on:
-        - mongoburocratico
-        - cuidador
-        - animal
-      ports:
-        - "8081:8081"
-    api:
-      build: ./src/API
-      image: dailyreport-api
-      container_name: "api"
-      links:
-        - mongoapi
-      environment:
-        - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
-      depends_on:
-        - mongoapi
-        - cuidador
-        - animal
-        - burocratico
-  ```
+[Esta clase no tiene ningún código asociado](https://github.com/Guillergood/DailyReport-2.0/issues/80)
 
-[Se ha añadido variables secretas en Github Secrets](https://github.com/Guillergood/DailyReport-2.0/issues/67):
 
-### Configuración de Github secrets
+Se han cambiado los controladores para que tengan la implementación de la lógica de negocio (la cual está ligada al framework) y a través de ella hagan las transacciones necesarias. Sin embargo, la lógica de negocio esta desacoplada de su publicación en una API y de cualquier dependencia del framework
 
-Como se ha observado en el archivo anterior, se ha introducido los valores directamente. Esto no es una buena práctica. Para ello se ha definido un archivo de [Github Actions](https://docs.github.com/es/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions) donde se quiere pasar como variables esos valores no seguros.
+````java
+package com.gbv.dailyreport.service.impl;
 
-Gracias a *Wojciech Krzywiec* por su extenso [tutorial](https://medium.com/faun/continuous-integration-of-java-project-with-github-actions-7a8a0e8246ef) sobre estas materias y más.
+import com.gbv.dailyreport.model.Animal;
+import com.gbv.dailyreport.repositories.AnimalRepository;
+import com.gbv.dailyreport.services.AnimalService;
+import org.springframework.stereotype.Service;
 
-```yaml
-name: Daily Report Push
-on: [push]
+import java.util.List;
 
-jobs:
-  build:
-    strategy:
-      #Matriz donde se van a guardar valores que se van a utilizar
-      matrix:
-        platform: [ubuntu-latest]
-        JDK: [11]
-    
-    runs-on: ${{ "matrix.platform }}
-    
-    steps:
-    #Utiliza "checkout" para poder acceder al repositorio
-    - uses: actions/checkout@v2
-    #Uno de los nombres de la acción que vamos a hacer (para ser más legible)
-    - name: Despliega Java con el JDK ${{ "matrix.JDK }}
-      #Utiliza "setup-java" para configurar java...
-      uses: actions/setup-java@v1
-      with:
-        #... con el JDK que se ha indicado
-        java-version: ${{ "matrix.JDK }}
-        
-    - name: Utiliza las variables globales para todo el proyecto
-      #Utiliza "allenevans/set-env" que permite definir variables que se pueden utilizar en todo el despliegue
-      uses: allenevans/set-env@v2.0.0
-      with:
-          PORT_HOST_API: ${{ "secrets.PORT_HOST_API }}
-          PORT_HOST_CUIDADOR: ${{ "secrets.PORT_HOST_CUIDADOR }}
-          PORT_HOST_BUROCRATICO: ${{ "secrets.PORT_HOST_BUROCRATICO }}
-          PORT_HOST_ANIMAL: ${{ "secrets.PORT_HOST_ANIMAL }}
-          
-          PORT_DB_DEFAULT: ${{ "secrets.DEFAULT_DB_PORT }}
-          PORT_DB_API: ${{ "secrets.PORT_DB_API }}
-          PORT_DB_CUIDADOR: ${{ "secrets.PORT_DB_CUIDADOR }}
-          PORT_DB_BUROCRATICO: ${{ "secrets.PORT_DB_BUROCRATICO }}
-          PORT_DB_ANIMAL: ${{ "secrets.PORT_DB_ANIMAL }}
-```
 
-*Por el momento este archivo se queda con esta configuración, habría que mejorarlo*.
+@Service
+public class AnimalServiceImpl implements AnimalService {
 
-Por último esas variables son introducidas en el repositorio en la opción de Secretos (*"secrets*), donde será reemplazadas por Github. 
+    private final AnimalRepository animalRepository;
 
-Al final el archivo `docker-compose.yml` quedaría así:
+    public AnimalServiceImpl(AnimalRepository animalRepository) {
+        this.animalRepository = animalRepository;
+    }
+   [...]
+````
+````java
+package com.gbv.dailyreport.service.impl;
 
-```yaml
-version: '3.3'
+import com.gbv.dailyreport.model.Animal;
+import com.gbv.dailyreport.repositories.AnimalRepository;
+import com.gbv.dailyreport.services.AnimalService;
+import org.springframework.stereotype.Service;
 
-services:
-  mongoanimal:
-    image: 'bitnami/mongodb:latest'
-    container_name: "mongoanimal"
-    ports:
-      - '${{ "PORT_DB_ANIMAL }}:${{ "PORT_DB_DEFAULT }}'
-  mongocuidador:
-    image: 'bitnami/mongodb:latest'
-    container_name: "mongocuidador"
-    ports:
-      - '${{ "PORT_DB_CUIDADOR }}:${{ "PORT_DB_DEFAULT }}'
-  mongoburocratico:
-    image: 'bitnami/mongodb:latest'
-    container_name: "mongoburocratico"
-    ports:
-      - '${{ "PORT_DB_BUROCRATICO }}:${{ "PORT_DB_DEFAULT }}'
-  mongoapi:
-    image: 'bitnami/mongodb:latest'
-    container_name: "mongoapi"
-    ports:
-      - '${{ "PORT_DB_API }}:${{ "PORT_DB_DEFAULT }}'
-  animal:
-    build: ./src/Animal
-    image: dailyreport-animal
-    container_name: "animal"
-    links:
-      - mongoanimal
-    environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ "PORT_HOST_ANIMAL }}
-      - MONGODB_HOST=mongoanimal
-      - MONGODB_PORT=${{ "PORT_DB_DEFAULT }}
+import java.util.List;
 
-    depends_on:
-      - mongoanimal
-    ports:
-      - "${{ "PORT_HOST_ANIMAL }}:${{ "PORT_HOST_ANIMAL }}"
-  cuidador:
-    build: ./src/Cuidador
-    image: dailyreport-cuidador
-    container_name: "cuidador"
-    links:
-      - mongocuidador
-    environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ "PORT_HOST_CUIDADOR }}
-      - MONGODB_HOST=mongocuidador
-      - MONGODB_PORT=${{ "PORT_DB_DEFAULT }}
 
-    depends_on:
-      - mongocuidador
-    ports:
-      - "${{ "PORT_HOST_CUIDADOR }}:${{ "PORT_HOST_CUIDADOR }}"
+@Service
+public class AnimalServiceImpl implements AnimalService {
 
-  burocratico:
-    build: ./src/Burocratico
-    image: dailyreport-burocratico
-    container_name: "burocratico"
-    links:
-      - mongoburocratico
-    environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ "PORT_HOST_BUROCRATICO }}
-      - MONGODB_HOST=mongoburocratico
-      - MONGODB_PORT=${{ "PORT_DB_DEFAULT }}
+    private final AnimalRepository animalRepository;
 
-    depends_on:
-      - mongoburocratico
-      - cuidador
-      - animal
-    ports:
-      - "${{ "PORT_HOST_BUROCRATICO }}:${{ "PORT_HOST_BUROCRATICO }}"
-  api:
-    build: ./src/API
-    image: dailyreport-api
-    container_name: "api"
-    links:
-      - mongoapi
-    environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ "PORT_HOST_API }}
-    depends_on:
-      - mongoapi
-      - cuidador
-      - animal
-      - burocratico
-```
+    public AnimalServiceImpl(AnimalRepository animalRepository) {
+        this.animalRepository = animalRepository;
+    }
+   [...]
+````
+````java
+package com.gbv.dailyreport.service.impl;
+
+import com.gbv.dailyreport.model.Animal;
+import com.gbv.dailyreport.repositories.AnimalRepository;
+import com.gbv.dailyreport.services.AnimalService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+
+@Service
+public class AnimalServiceImpl implements AnimalService {
+
+    private final AnimalRepository animalRepository;
+
+    public AnimalServiceImpl(AnimalRepository animalRepository) {
+        this.animalRepository = animalRepository;
+    }
+   [...]
+````
+Y aquí la lógica de negocio sin ningún tipo de dependencia:
+
+````java
+package com.gbv.dailyreport.services;
+
+import com.gbv.dailyreport.model.Animal;
+
+import java.util.List;
+
+public interface AnimalService {
+    void add(Animal animal);
+    void delete(Animal animal);
+    void edit(int id, Animal animal);
+    Animal get(int id);
+    List<Animal> getAll();
+}
+````
+
+````java
+package com.gbv.dailyreport.services;
+
+import com.gbv.dailyreport.model.Cuidador;
+
+import java.util.List;
+
+public interface CuidadorService {
+    void add(Cuidador cuidador);
+    void delete(Cuidador cuidador);
+    void edit(int id, Cuidador cuidador);
+    Cuidador get(int id);
+    List<Cuidador> getAll();
+}
+````
+
+````java
+package com.gbv.dailyreport.services;
+
+import com.gbv.dailyreport.model.Report;
+
+import java.util.List;
+
+public interface ReportService {
+    void add(Report report);
+    void delete(Report report);
+    void edit(int id, Report report);
+    Report get(int id);
+    List<Report> getAll();
+}
+````
+
+
+
