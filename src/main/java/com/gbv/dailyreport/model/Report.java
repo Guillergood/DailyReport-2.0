@@ -61,6 +61,18 @@ public class Report {
         this.report = report;
     }
 
+    public String getKeeperName() {
+        return keeperName;
+    }
+
+    public String getAnimalName() {
+        return animalName;
+    }
+
+    public String getReport() {
+        return report;
+    }
+
     //Serializador
     public String serialize() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();

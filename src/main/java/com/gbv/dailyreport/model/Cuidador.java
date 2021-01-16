@@ -42,6 +42,10 @@ public class Cuidador {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     //Serializador
     public String serialize() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();

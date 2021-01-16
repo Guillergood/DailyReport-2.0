@@ -72,4 +72,12 @@ public class Animal {
     public int getId() {
         return id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean getChecked() {
+        return checked;
+    }
 }
