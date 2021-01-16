@@ -53,6 +53,8 @@ PUT `/dailyreport/report/{id}`, que modifica un report existente por otro dado, 
 DELETE `/dailyreport/report/{id}`, que elimina un report, si no existe previamente devuelve un código no content (204).
 
 
+Este diseño se ha implementado bajo el siguiente [estándar](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
+
 Con las siguientes pruebas correspondientes:
 
 ````
