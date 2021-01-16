@@ -7,7 +7,9 @@ test:
   - src/test/java/com/gbv/dailyreport/DailyreportApplicationTest.java
   
 fichero_tareas: pom.xml
-  
+
+make: mvn
+
 entidad:
   - src/main/java/com/gbv/dailyreport/model/Animal.java
   - src/main/java/com/gbv/dailyreport/model/Report.java
