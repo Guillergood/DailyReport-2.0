@@ -61,7 +61,7 @@ public class AnimalController {
         }
         catch (IndexOutOfBoundsException e){
             return ResponseEntity
-                    .status(HttpStatus.NO_CONTENT)
+                    .status(HttpStatus.NOT_FOUND)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body("There is not an object like that to update");
         }

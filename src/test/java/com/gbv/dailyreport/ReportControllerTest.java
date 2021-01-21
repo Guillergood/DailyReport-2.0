@@ -110,7 +110,7 @@ public class ReportControllerTest {
     }
 
     @Test
-    public void updateReport_withNoExistingReport_shouldReturnNoContent() throws Exception {
+    public void updateReport_withNoExistingReport_shouldReturnNotFound() throws Exception {
         // Given
         final int mockedId = 2;
         final ResultActions sourceReport = mvc.perform(MockMvcRequestBuilders
@@ -135,7 +135,7 @@ public class ReportControllerTest {
 
 
         // Then
-        result.andExpect(status().isNoContent());
+        result.andExpect(status().isNotFound());
     }
 
     //Metodo para añadir un report a la colecccion

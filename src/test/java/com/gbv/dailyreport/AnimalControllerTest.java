@@ -107,7 +107,7 @@ public class AnimalControllerTest {
     }
 
     @Test
-    public void updateAnimal_withNoExistingAnimal_shouldReturnNoContent() throws Exception {
+    public void updateAnimal_withNoExistingAnimal_shouldReturnNotFound() throws Exception {
         // Given
         final int mockedId = 2;
         final ResultActions sourceAnimal = mvc.perform(MockMvcRequestBuilders
@@ -131,7 +131,7 @@ public class AnimalControllerTest {
 
 
         // Then
-        result.andExpect(status().isNoContent());
+        result.andExpect(status().isNotFound());
     }
 
     //Metodo para añadir un animal a la colecccion

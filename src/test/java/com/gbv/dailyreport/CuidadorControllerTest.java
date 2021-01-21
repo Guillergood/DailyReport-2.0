@@ -108,7 +108,7 @@ public class CuidadorControllerTest {
     }
 
     @Test
-    public void updateCuidador_withNoExistingCuidador_shouldReturnNoContent() throws Exception {
+    public void updateCuidador_withNoExistingCuidador_shouldReturnNotFound() throws Exception {
         // Given
         final int mockedId = 2;
         final ResultActions sourceCuidador = mvc.perform(MockMvcRequestBuilders
@@ -131,7 +131,7 @@ public class CuidadorControllerTest {
 
 
         // Then
-        result.andExpect(status().isNoContent());
+        result.andExpect(status().isNotFound());
     }
 
     //Metodo para añadir un cuidador a la colecccion
