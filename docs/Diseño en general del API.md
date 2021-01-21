@@ -26,7 +26,7 @@ POST `/dailyreport/animal/` , que añade un animal a la colección animal .
 
 PUT `/dailyreport/animal/{id}`, que modifica un animal existente por otro dado, si no existe previamente devuelve un código no content (204).
 
-DELETE `/dailyreport/animal/{id}`, que elimina un animal, si no existe previamente devuelve un código no content (204).
+DELETE `/dailyreport/animal/{id}`, que elimina un animal, si no existe previamente devuelve un código not found (404).
 
 Deducidas de las siguientes HU:
 
@@ -46,7 +46,7 @@ POST `/dailyreport/cuidador/` , que añade un cuidador a la colección cuidador 
 
 PUT `/dailyreport/cuidador/{id}`, que modifica un cuidador existente por otro dado, si no existe previamente devuelve un código no content (204).
 
-DELETE `/dailyreport/cuidador/{id}`, que elimina un cuidador, si no existe previamente devuelve un código no content (204).
+DELETE `/dailyreport/cuidador/{id}`, que elimina un cuidador, si no existe previamente devuelve un código not found (404).
 
 Deducidas de las siguientes HU:
 
@@ -66,7 +66,7 @@ POST `/dailyreport/report/` , que añade un report a la colección report .
 
 PUT `/dailyreport/report/{id}`, que modifica un report existente por otro dado, si no existe previamente devuelve un código no content (204).
 
-DELETE `/dailyreport/report/{id}`, que elimina un report, si no existe previamente devuelve un código no content (204).
+DELETE `/dailyreport/report/{id}`, que elimina un report, si no existe previamente devuelve un código not found (404).
 
 Deducidas de las siguientes HU:
 
