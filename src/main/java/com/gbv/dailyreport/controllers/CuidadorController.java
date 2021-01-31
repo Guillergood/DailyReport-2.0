@@ -18,7 +18,7 @@ public class CuidadorController {
     public CuidadorController(CuidadorServiceImpl cuidadorService) {
         this.cuidadorService = cuidadorService;
     }
-    @RequestMapping("/dailyreport/cuidador/all")
+    @RequestMapping("/dailyreport/cuidador")
     public List<Cuidador> findAll() {
         return cuidadorService.getAll();
     }
@@ -79,7 +79,7 @@ public class CuidadorController {
         }
         catch (IndexOutOfBoundsException e){
             return ResponseEntity
-                    .status(HttpStatus.NO_CONTENT)
+                    .status(HttpStatus.NOT_FOUND)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body("There is not an object like that to delete");
         }

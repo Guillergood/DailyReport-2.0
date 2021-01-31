@@ -18,7 +18,7 @@ public class AnimalController {
     public AnimalController(AnimalServiceImpl animalService) {
         this.animalService = animalService;
     }
-    @RequestMapping("/dailyreport/animal/all")
+    @RequestMapping("/dailyreport/animal")
     public List<Animal> findAll() {
         return animalService.getAll();
     }
@@ -79,7 +79,7 @@ public class AnimalController {
         }
         catch (IndexOutOfBoundsException e){
             return ResponseEntity
-                    .status(HttpStatus.NO_CONTENT)
+                    .status(HttpStatus.NOT_FOUND)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body("There is not an object like that to delete");
         }

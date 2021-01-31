@@ -18,7 +18,7 @@ public class ReportController {
     public ReportController(ReportServiceImpl reportService) {
         this.reportService = reportService;
     }
-    @RequestMapping("/dailyreport/report/all")
+    @RequestMapping("/dailyreport/report")
     public List<Report> findAll() {
         return reportService.getAll();
     }
@@ -79,7 +79,7 @@ public class ReportController {
         }
         catch (IndexOutOfBoundsException e){
             return ResponseEntity
-                    .status(HttpStatus.NO_CONTENT)
+                    .status(HttpStatus.NOT_FOUND)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body("There is not an object like that to delete");
         }
