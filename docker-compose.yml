@@ -13,7 +13,7 @@ services:
     ports:
       - 27017:27017
 
-  # Servicio del proyecto que construye el contenedor con el Dockerfile
+  # Servicio del proyecto que construye el contenedor con el DockerfileTest
   # utilizando la misma red que el servicio mongodb.
   # Además utiliza los archivos locales como volumen para poder cambiarlos
   # sin necesidad de reconstruir todo de nuevo. Y la carpeta "log" para sacar el log del servicio
