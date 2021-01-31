@@ -11,12 +11,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.util.Assert;
 import org.springframework.util.MimeTypeUtils;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -63,8 +65,7 @@ public class ReportControllerTest {
     @Test
     public void getAllReports() throws Exception {
         populateReportes();
-        mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/report")
+        mvc.perform(get("/dailyreport/report")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -77,8 +78,7 @@ public class ReportControllerTest {
         final String invalidAcceptMimeType = MimeTypeUtils.APPLICATION_XML_VALUE;
 
         // When
-        final ResultActions result = mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/report")
+        final ResultActions result = mvc.perform(get("/dailyreport/report")
                 .accept(invalidAcceptMimeType));
 
         // Then
@@ -91,8 +91,7 @@ public class ReportControllerTest {
         final int mockedId = 5;
 
         // When
-        final ResultActions result = mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/report/".concat(Integer.toString(mockedId)))
+        final ResultActions result = mvc.perform(get("/dailyreport/report/".concat(Integer.toString(mockedId)))
                 .accept(MimeTypeUtils.APPLICATION_JSON_VALUE));
 
         // Then
@@ -106,8 +105,7 @@ public class ReportControllerTest {
         final int mockedId = 2;
 
         // When
-        final ResultActions result = mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/report/".concat(Integer.toString(mockedId)))
+        final ResultActions result = mvc.perform(get("/dailyreport/report/".concat(Integer.toString(mockedId)))
                 .accept(MimeTypeUtils.APPLICATION_JSON_VALUE));
 
         // Then
@@ -119,8 +117,7 @@ public class ReportControllerTest {
         // Given
         populateReportes();
         final int mockedId = 2;
-        final ResultActions sourceReport = mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/report/".concat(Integer.toString(mockedId)))
+        final ResultActions sourceReport = mvc.perform(get("/dailyreport/report/".concat(Integer.toString(mockedId)))
                 .accept(MimeTypeUtils.APPLICATION_JSON_VALUE));
 
         String sourceReportString = sourceReport.andReturn().getResponse().getContentAsString();
@@ -145,8 +142,7 @@ public class ReportControllerTest {
         // Given
         populateReportes();
         final int mockedId = 2;
-        final ResultActions sourceReport = mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/report/".concat(Integer.toString(mockedId)))
+        final ResultActions sourceReport = mvc.perform(get("/dailyreport/report/".concat(Integer.toString(mockedId)))
                 .accept(MimeTypeUtils.APPLICATION_JSON_VALUE));
 
         String sourceReportString = sourceReport.andReturn().getResponse().getContentAsString();
@@ -205,6 +201,18 @@ public class ReportControllerTest {
                 .andDo(print())
                 .andExpect(status().isNotFound());
 
+    }
+
+    @Test
+    public void exportPDF_shouldReturn() throws Exception{
+        populateReportes();
+        MvcResult result = this.mvc.perform(MockMvcRequestBuilders
+                .get("/dailyreport/report/pdf")
+                .contentType(MediaType.APPLICATION_PDF))
+                .andDo(print())
+                .andReturn();
+        String content = result.getResponse().getContentAsString();
+        Assert.isTrue(content.contains("PDF"), "The request has a pdf");
     }
 
 
