@@ -2,7 +2,7 @@ package com.gbv.dailyreport.repositories;
 
 
 import com.gbv.dailyreport.model.Cuidador;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 /*
@@ -16,4 +16,6 @@ import org.springframework.stereotype.Repository;
 
 */
 @Repository
-public interface CuidadorRepository extends JpaRepository<Cuidador,Integer> {}
+public interface CuidadorRepository extends MongoRepository<Cuidador,Integer> {
+    Cuidador findCuidadorById(int id);
+}

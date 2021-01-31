@@ -2,7 +2,8 @@ package com.gbv.dailyreport.repositories;
 
 
 import com.gbv.dailyreport.model.Animal;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 /*
      Interfaz que define los metodos que se utilizaran para el repositorio de mongo
@@ -14,6 +15,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
      Tambien, proporciona otros metodos como save() y update() que forman parte del CRUD
 
 */
-
-public interface AnimalRepository extends JpaRepository<Animal,Integer> {
+@Repository
+public interface AnimalRepository extends MongoRepository<Animal,Integer> {
+    Animal findAnimalById(int id);
 }

@@ -22,7 +22,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     public void edit(int id, Report report) {
-        Report sourceReport = reportRepository.getOne(id);
+        Report sourceReport = reportRepository.findReportById(id);
         reportRepository.delete(sourceReport);
         reportRepository.save(report);
 
@@ -31,7 +31,7 @@ public class ReportServiceImpl implements ReportService {
     public Report get(int id) {
 
         if(reportRepository.existsById(id)){
-            return reportRepository.getOne(id);
+            return reportRepository.findReportById(id);
         }
         else{
             throw new IndexOutOfBoundsException();

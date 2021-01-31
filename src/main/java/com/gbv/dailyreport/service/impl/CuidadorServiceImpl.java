@@ -22,7 +22,7 @@ public class CuidadorServiceImpl implements CuidadorService {
     }
 
     public void edit(int id, Cuidador cuidador) {
-        Cuidador sourceCuidador = cuidadorRepository.getOne(id);
+        Cuidador sourceCuidador = cuidadorRepository.findCuidadorById(id);
         cuidadorRepository.delete(sourceCuidador);
         cuidadorRepository.save(cuidador);
 
@@ -31,7 +31,7 @@ public class CuidadorServiceImpl implements CuidadorService {
     public Cuidador get(int id) {
 
         if(cuidadorRepository.existsById(id)){
-            return cuidadorRepository.getOne(id);
+            return cuidadorRepository.findCuidadorById(id);
         }
         else{
             throw new IndexOutOfBoundsException();

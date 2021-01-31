@@ -22,7 +22,7 @@ public class AnimalServiceImpl implements AnimalService {
     }
 
     public void edit(int id, Animal animal) {
-        Animal sourceAnimal = animalRepository.getOne(id);
+        Animal sourceAnimal = animalRepository.findAnimalById(id);
         animalRepository.delete(sourceAnimal);
         animalRepository.save(animal);
 
@@ -31,7 +31,7 @@ public class AnimalServiceImpl implements AnimalService {
     public Animal get(int id) {
 
         if(animalRepository.existsById(id)){
-            return animalRepository.getOne(id);
+            return animalRepository.findAnimalById(id);
         }
         else{
             throw new IndexOutOfBoundsException();
