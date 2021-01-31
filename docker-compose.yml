@@ -1,84 +1,47 @@
 version: '3.3'
 
 services:
-  mongoanimal:
+  # Servicio de mongodb para guardar los datos
+  # con la imagen de bitnami de mongodb
+  # indicando que usa una red para comunicarse con el proyecto
+  # mapeando el puerto 27017 al mismo puerto
+  mongodb:
     image: 'bitnami/mongodb:latest'
-    container_name: "mongoanimal"
+    container_name: "mongodb"
+    networks:
+      - dailyreport-network
     ports:
-      - '${{ PORT_DB_ANIMAL }}:${{ PORT_DB_DEFAULT }}'
-  mongocuidador:
-    image: 'bitnami/mongodb:latest'
-    container_name: "mongocuidador"
-    ports:
-      - '${{ PORT_DB_CUIDADOR }}:${{ PORT_DB_DEFAULT }}'
-  mongoburocratico:
-    image: 'bitnami/mongodb:latest'
-    container_name: "mongoburocratico"
-    ports:
-      - '${{ PORT_DB_BUROCRATICO }}:${{ PORT_DB_DEFAULT }}'
-  mongoapi:
-    image: 'bitnami/mongodb:latest'
-    container_name: "mongoapi"
-    ports:
-      - '${{ PORT_DB_API }}:${{ PORT_DB_DEFAULT }}'
-  animal:
-    build: ./src/Animal
-    image: dailyreport-animal
-    container_name: "animal"
-    links:
-      - mongoanimal
-    environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ PORT_HOST_ANIMAL }}
-      - MONGODB_HOST=mongoanimal
-      - MONGODB_PORT=${{ PORT_DB_DEFAULT }}
+      - 27017:27017
 
-    depends_on:
-      - mongoanimal
-    ports:
-      - "${{ PORT_HOST_ANIMAL }}:${{ PORT_HOST_ANIMAL }}"
-  cuidador:
-    build: ./src/Cuidador
-    image: dailyreport-cuidador
-    container_name: "cuidador"
+  # Servicio del proyecto que construye el contenedor con el Dockerfile
+  # utilizando la misma red que el servicio mongodb.
+  # Además utiliza los archivos locales como volumen para poder cambiarlos
+  # sin necesidad de reconstruir todo de nuevo. Y la carpeta "log" para sacar el log del servicio
+  # Indicamos que el servicio se liga con mongodb
+  # Indicamos unas variables de entorno necesarias para configurar Spring con mongodb
+  # y optimizar las conexiones del proyecto.
+  # Por último, el servicio depende de mongodb y se mapea el puerto 8080 al mismo puerto
+  dailyreport:
+    build: .
+    image: dailyreport-2.0
+    networks:
+      - dailyreport-network
+    container_name: "dailyreport-2.0"
+    volumes:
+      - ./:/app/test
+      - ./log:/log
     links:
-      - mongocuidador
+      - mongodb
     environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ PORT_HOST_CUIDADOR }}
-      - MONGODB_HOST=mongocuidador
-      - MONGODB_PORT=${{ PORT_DB_DEFAULT }}
-
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=27017
+      - MONGODB_HOST=mongodb
+      - MONGODB_PORT=27017
     depends_on:
-      - mongocuidador
+      - mongodb
     ports:
-      - "${{ PORT_HOST_CUIDADOR }}:${{ PORT_HOST_CUIDADOR }}"
+      - 8080:8080
 
-  burocratico:
-    build: ./src/Burocratico
-    image: dailyreport-burocratico
-    container_name: "burocratico"
-    links:
-      - mongoburocratico
-    environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ PORT_HOST_BUROCRATICO }}
-      - MONGODB_HOST=mongoburocratico
-      - MONGODB_PORT=${{ PORT_DB_DEFAULT }}
-
-    depends_on:
-      - mongoburocratico
-      - cuidador
-      - animal
-    ports:
-      - "${{ PORT_HOST_BUROCRATICO }}:${{ PORT_HOST_BUROCRATICO }}"
-  api:
-    build: ./src/API
-    image: dailyreport-api
-    container_name: "api"
-    links:
-      - mongoapi
-    environment:
-      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=${{ PORT_HOST_API }}
-    depends_on:
-      - mongoapi
-      - cuidador
-      - animal
-      - burocratico
+# Se crea una nueva red para ligar ambos servicios.
+networks:
+  dailyreport-network:
+    driver: bridge
