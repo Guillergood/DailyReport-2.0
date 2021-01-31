@@ -3,18 +3,14 @@ package com.gbv.dailyreport.model;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.annotation.Id;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 //Clase que envuelve los datos relacionados con los Cuidadores
 
-@Entity
+@Document(collection = "cuidadores")
 public class Cuidador {
     //Indica el id por el que se rige este objeto
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     private String name;
@@ -32,19 +28,7 @@ public class Cuidador {
     }
 
     // Constructor por defecto
-    public Cuidador() {
-
-    }
-
-    //Getters
-    @javax.persistence.Id
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
+    public Cuidador() {}
 
     //Serializador
     public String serialize() throws JsonProcessingException {
@@ -61,6 +45,10 @@ public class Cuidador {
                 '}';
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -68,5 +56,4 @@ public class Cuidador {
     public void setName(String name) {
         this.name = name;
     }
-
 }

@@ -3,18 +3,14 @@ package com.gbv.dailyreport.model;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.annotation.Id;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 //Clase que envuelve los datos relacionados con los Reports
 
-@Entity
+@Document(collection = "reports")
 public class Report {
     //Indica el id por el que se rige este objeto
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String keeperName;
     private String animalName;
@@ -40,7 +36,6 @@ public class Report {
     public Report() { }
 
     //Getters
-    @javax.persistence.Id
     public int getId() {
         return id;
     }
@@ -59,18 +54,6 @@ public class Report {
 
     public void setReport(String report) {
         this.report = report;
-    }
-
-    public String getKeeperName() {
-        return keeperName;
-    }
-
-    public String getAnimalName() {
-        return animalName;
-    }
-
-    public String getReport() {
-        return report;
     }
 
     //Serializador

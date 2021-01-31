@@ -3,19 +3,15 @@ package com.gbv.dailyreport.model;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.annotation.Id;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
 //Clase que envuelve los datos relacionados con los Animales
 
-@Entity
+@Document(collection = "animales")
 public class Animal {
     //Indica el id por el que se rige este objeto
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     private String name;
@@ -38,16 +34,6 @@ public class Animal {
     // Constructor por defecto
     public Animal() {}
 
-    //Getter
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setChecked(boolean checked) {
-        this.checked = checked;
-    }
-
     //Serializador
     public String serialize() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
@@ -64,20 +50,27 @@ public class Animal {
                 '}';
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @javax.persistence.Id
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public boolean getChecked() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isChecked() {
         return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 }
