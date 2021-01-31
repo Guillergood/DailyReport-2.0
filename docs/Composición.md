@@ -18,7 +18,7 @@ El fichero de composición de servicios pudo probarse con anterioridad debido al
 Por tanto he recopilado esa información, además de investigar posibles mejoras, dejando el fichero de esta manera:
 
 ```Dockerfile
-version: '3.8'
+version: '3.3'
 
 services:
   # Servicio de mongodb para guardar los datos
