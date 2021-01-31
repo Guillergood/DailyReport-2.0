@@ -11,7 +11,6 @@ Nuevo
 
 
 ---
-
 Como se ha dicho anteriormente en [Prueba del sistema](https://guillergood.github.io/DailyReport-2.0/docs/Testeo.html)
 
 Se ha visto que en el peor de los casos el sistema tiene una velocidad media de 4ms. Y la mejor de 1ms.
