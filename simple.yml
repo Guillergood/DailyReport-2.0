@@ -1,0 +1,163 @@
+execution:
+  - concurrency: 10
+    ramp-up: 1m
+    iterations: 10000
+    #hold-for: 1m30s
+    scenario: simple
+
+scenarios:
+  simple:
+    requests:
+      #######################################################################
+      #                                 ANIMAL                              #
+      #######################################################################
+      #                           LLAMADAS POST ANIMAL                      #
+      #######################################################################
+      - url: http://0.0.0.0:8080/dailyreport/animal
+        method: POST
+        label: "POST Animal"
+        headers:
+          Content-Type: application/json
+        body: '{"id":1,"name":"Bonobo","checked":false}'
+
+
+      #######################################################################
+      #                        LLAMADAS PUT ANIMAL                          #
+      #######################################################################
+
+      - once:
+          - url: http://0.0.0.0:8080/dailyreport/animal/1
+            method: PUT
+            label: "PUT Animal /dailyreport/animal/1"
+            headers:
+              Content-Type: application/json
+            body: '{"id":1,"name":"Bonobo","checked":true}'
+
+
+      #######################################################################
+      #                        LLAMADAS DELETE ANIMAL                       #
+      #######################################################################
+
+      - once:
+          - url: http://0.0.0.0:8080/dailyreport/animal/1
+            method: DELETE
+            label: "DELETE Animal"
+          - url: http://0.0.0.0:8080/dailyreport/animal
+            method: POST
+            label: "REESTABLECER Animal después del DELETE"
+            headers:
+              Content-Type: application/json
+            body: '{"id":1,"name":"Bonobo","checked":false}'
+
+      #######################################################################
+      #                               CUIDADOR                              #
+      #######################################################################
+      #                        LLAMADAS POST CUIDADOR                       #
+      #######################################################################
+
+      - url: http://0.0.0.0:8080/dailyreport/cuidador
+        method: POST
+        label: "POST Cuidador"
+        headers:
+          Content-Type: application/json
+        body: '{"id":1,"name":"Alan"}'
+
+      #######################################################################
+      #                        LLAMADAS PUT CUIDADOR                        #
+      #######################################################################
+
+      - once:
+          - url: http://0.0.0.0:8080/dailyreport/cuidador/1
+            method: PUT
+            label: "PUT Cuidador /dailyreport/cuidador/1"
+            headers:
+              Content-Type: application/json
+            body: '{"id":1,"name":"Helen"}'
+
+
+      #######################################################################
+      #                        LLAMADAS DELETE CUIDADOR                     #
+      #######################################################################
+
+      - once:
+          - url: http://0.0.0.0:8080/dailyreport/cuidador/1
+            label: "DELETE Cuidador /dailyreport/cuidador/1"
+            method: DELETE
+          - url: http://0.0.0.0:8080/dailyreport/cuidador
+            label: "REESTABLECER Cuidador después del DELETE"
+            method: POST
+            headers:
+              Content-Type: application/json
+            body: '{"id":1,"name":"Alan"}'
+
+
+      #######################################################################
+      #                               REPORT                                #
+      #######################################################################
+      #                        LLAMADAS POST REPORT                         #
+      #######################################################################
+
+      - url: http://0.0.0.0:8080/dailyreport/report
+        method: POST
+        label: "POST Report"
+        headers:
+          Content-Type: application/json
+        body: '{"id":1,"keeperName":"Alan","animalName":"Bonobo","report":"hello"}'
+
+
+      #######################################################################
+      #                        LLAMADAS PUT REPORT                          #
+      #######################################################################
+
+      - once:
+          - url: http://0.0.0.0:8080/dailyreport/report/1
+            method: PUT
+            label: "PUT Report /dailyreport/report/1"
+            headers:
+              Content-Type: application/json
+            body: '{"id":1,"keeperName":"Helen","animalName":"Bonobo","report":"hello"}'
+
+      #######################################################################
+      #                        LLAMADAS DELETE REPORT                       #
+      #######################################################################
+
+      - once:
+          - url: http://0.0.0.0:8080/dailyreport/report/1
+            method: DELETE
+            label: "DELETE Report /dailyreport/report/1"
+          - url: http://0.0.0.0:8080/dailyreport/report
+            method: POST
+            label: "REESTABLECER Report después del DELETE"
+            headers:
+              Content-Type: application/json
+            body: '{"id":1,"keeperName":"Alan","animalName":"Bonobo","report":"hello"}'
+
+      #######################################################################
+      #                        LLAMADAS GET                                 #
+      #######################################################################
+
+
+      - url: http://0.0.0.0:8080/dailyreport/animal
+        method: GET
+        label: "GET todos los animales"
+      - url: http://0.0.0.0:8080/dailyreport/report
+        method: GET
+        label: "GET todos los reports"
+      - url: http://0.0.0.0:8080/dailyreport/cuidador
+        method: GET
+        label: "GET todos los cuidadores"
+
+reporting:
+  - module: final-stats
+    dump-xml: stats.xml
+  - module: passfail
+    criteria:
+      - success<100%, continue as failed
+      - avg-rt>500ms, stop as failed
+      - avg-ct>500ms, stop as failed
+  - module: blazemeter
+    token: ${TAURUS_TOKEN}
+    report-name: DailyReport-2.0
+    test: DailyReport performance test
+    project: Taurus Tests Group
+    upload-artifacts: true  # upload artifacts when test is finished
