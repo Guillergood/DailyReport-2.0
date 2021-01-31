@@ -4,14 +4,12 @@ import com.gbv.dailyreport.controllers.CuidadorController;
 import com.gbv.dailyreport.model.Cuidador;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
+import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -26,16 +24,46 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(CuidadorController.class)
 @ComponentScan
-@AutoConfigureDataJpa
+@AutoConfigureDataMongo
 public class CuidadorControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
+    private void populateCuidadores() throws Exception {
+        Cuidador cuidador = new Cuidador(1,"name_1");
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/cuidador/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(cuidador.serialize()));
+
+        cuidador = new Cuidador(2,"name_2");
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/cuidador/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(cuidador.serialize()));
+
+        cuidador = new Cuidador(3,"name_3");
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/cuidador/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(cuidador.serialize()));
+        cuidador = new Cuidador(4,"name_4");
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/cuidador/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(cuidador.serialize()));
+    }
+
     @Test
     public void getAllCuidadors() throws Exception {
+        populateCuidadores();
         mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/cuidador/all")
+                .get("/dailyreport/cuidador")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -49,7 +77,7 @@ public class CuidadorControllerTest {
 
         // When
         final ResultActions result = mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/cuidador/all")
+                .get("/dailyreport/cuidador")
                 .accept(invalidAcceptMimeType));
 
         // Then
@@ -73,6 +101,7 @@ public class CuidadorControllerTest {
     @Test
     public void getCuidador_withExistingCuidador_shouldReturnOk() throws Exception {
         // Given
+        populateCuidadores();
         final int mockedId = 2;
 
         // When
@@ -87,6 +116,7 @@ public class CuidadorControllerTest {
     @Test
     public void updateCuidador_withExistingCuidador_shouldReturnOk() throws Exception {
         // Given
+        populateCuidadores();
         final int mockedId = 2;
         final ResultActions sourceCuidador = mvc.perform(MockMvcRequestBuilders
                 .get("/dailyreport/cuidador/".concat(Integer.toString(mockedId)))
@@ -110,6 +140,7 @@ public class CuidadorControllerTest {
     @Test
     public void updateCuidador_withNoExistingCuidador_shouldReturnNotFound() throws Exception {
         // Given
+        populateCuidadores();
         final int mockedId = 2;
         final ResultActions sourceCuidador = mvc.perform(MockMvcRequestBuilders
                 .get("/dailyreport/cuidador/".concat(Integer.toString(mockedId)))
@@ -153,6 +184,7 @@ public class CuidadorControllerTest {
     //Metodo para eliminar un cuidador de la colecccion
     @Test
     public void delete_withExistingData_shouldReturnOk() throws Exception {
+        populateCuidadores();
         this.mvc.perform(MockMvcRequestBuilders
                 .delete("/dailyreport/cuidador/1")
                 .contentType(MediaType.APPLICATION_JSON))
@@ -167,7 +199,7 @@ public class CuidadorControllerTest {
                 .delete("/dailyreport/cuidador/101")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isNoContent());
+                .andExpect(status().isNotFound());
 
     }
 

@@ -4,14 +4,12 @@ import com.gbv.dailyreport.controllers.ReportController;
 import com.gbv.dailyreport.model.Report;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
+import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -26,16 +24,47 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(ReportController.class)
 @ComponentScan
-@AutoConfigureDataJpa
+@AutoConfigureDataMongo
 public class ReportControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
+    private void populateReportes() throws Exception {
+        Report report = new Report(1,"name_1","animal_1","hello");
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/report/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(report.serialize()));
+
+        report = new Report(2,"name_2","animal_2","hello");
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/report/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(report.serialize()));
+
+        report = new Report(3,"name_3","animal_3","hello");
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/report/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(report.serialize()));
+
+        report = new Report(4,"name_4","animal_4","hello");
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/report/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(report.serialize()));
+    }
+
     @Test
     public void getAllReports() throws Exception {
+        populateReportes();
         mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/report/all")
+                .get("/dailyreport/report")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -49,7 +78,7 @@ public class ReportControllerTest {
 
         // When
         final ResultActions result = mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/report/all")
+                .get("/dailyreport/report")
                 .accept(invalidAcceptMimeType));
 
         // Then
@@ -73,6 +102,7 @@ public class ReportControllerTest {
     @Test
     public void getReport_withExistingReport_shouldReturnOk() throws Exception {
         // Given
+        populateReportes();
         final int mockedId = 2;
 
         // When
@@ -87,6 +117,7 @@ public class ReportControllerTest {
     @Test
     public void updateReport_withExistingReport_shouldReturnOk() throws Exception {
         // Given
+        populateReportes();
         final int mockedId = 2;
         final ResultActions sourceReport = mvc.perform(MockMvcRequestBuilders
                 .get("/dailyreport/report/".concat(Integer.toString(mockedId)))
@@ -112,6 +143,7 @@ public class ReportControllerTest {
     @Test
     public void updateReport_withNoExistingReport_shouldReturnNotFound() throws Exception {
         // Given
+        populateReportes();
         final int mockedId = 2;
         final ResultActions sourceReport = mvc.perform(MockMvcRequestBuilders
                 .get("/dailyreport/report/".concat(Integer.toString(mockedId)))
@@ -157,6 +189,7 @@ public class ReportControllerTest {
     //Metodo para eliminar un report de la colecccion
     @Test
     public void delete_withExistingData_shouldReturnOk() throws Exception {
+        populateReportes();
         this.mvc.perform(MockMvcRequestBuilders
                 .delete("/dailyreport/report/1")
                 .contentType(MediaType.APPLICATION_JSON))
@@ -170,7 +203,7 @@ public class ReportControllerTest {
                 .delete("/dailyreport/report/101")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isNoContent());
+                .andExpect(status().isNotFound());
 
     }
 

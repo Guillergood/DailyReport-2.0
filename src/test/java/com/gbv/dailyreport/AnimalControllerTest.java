@@ -5,7 +5,7 @@ import com.gbv.dailyreport.model.Animal;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
+import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
@@ -24,16 +24,46 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(AnimalController.class)
 @ComponentScan
-@AutoConfigureDataJpa
+@AutoConfigureDataMongo
 public class AnimalControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
+    private void populateAnimales() throws Exception {
+        Animal animal = new Animal(1, "Bonobo", false);
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/animal/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(animal.serialize()));
+
+        animal = new Animal(2, "Bonobo", false);
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/animal/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(animal.serialize()));
+
+        animal = new Animal(3, "Bonobo", false);
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/animal/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(animal.serialize()));
+        animal = new Animal(4, "Bonobo", false);
+
+        this.mvc.perform(MockMvcRequestBuilders
+                .post("/dailyreport/animal/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(animal.serialize()));
+    }
+
     @Test
     public void getAllAnimals() throws Exception {
+        populateAnimales();
         mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/animal/all")
+                .get("/dailyreport/animal")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -47,7 +77,7 @@ public class AnimalControllerTest {
 
         // When
         final ResultActions result = mvc.perform(MockMvcRequestBuilders
-                .get("/dailyreport/animal/all")
+                .get("/dailyreport/animal")
                 .accept(invalidAcceptMimeType));
 
         // Then
@@ -71,6 +101,7 @@ public class AnimalControllerTest {
     @Test
     public void getAnimal_withExistingAnimal_shouldReturnOk() throws Exception {
         // Given
+        populateAnimales();
         final int mockedId = 2;
 
         // When
@@ -85,6 +116,7 @@ public class AnimalControllerTest {
     @Test
     public void updateAnimal_withExistingAnimal_shouldReturnOk() throws Exception {
         // Given
+        populateAnimales();
         final int mockedId = 2;
         final ResultActions sourceAnimal = mvc.perform(MockMvcRequestBuilders
                 .get("/dailyreport/animal/".concat(Integer.toString(mockedId)))
@@ -109,6 +141,7 @@ public class AnimalControllerTest {
     @Test
     public void updateAnimal_withNoExistingAnimal_shouldReturnNotFound() throws Exception {
         // Given
+        populateAnimales();
         final int mockedId = 2;
         final ResultActions sourceAnimal = mvc.perform(MockMvcRequestBuilders
                 .get("/dailyreport/animal/".concat(Integer.toString(mockedId)))
@@ -153,6 +186,7 @@ public class AnimalControllerTest {
     //Metodo para eliminar un animal de la colecccion
     @Test
     public void delete_withExistingData_shouldReturnOk() throws Exception {
+        populateAnimales();
         this.mvc.perform(MockMvcRequestBuilders
                 .delete("/dailyreport/animal/1")
                 .contentType(MediaType.APPLICATION_JSON))
@@ -167,7 +201,7 @@ public class AnimalControllerTest {
                 .delete("/dailyreport/animal/101")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isNoContent());
+                .andExpect(status().isNotFound());
 
     }
 
