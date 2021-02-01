@@ -15,11 +15,11 @@ Como se ha dicho anteriormente en [Prueba del sistema](https://guillergood.githu
 
 Se ha visto que en el peor de los casos el sistema tiene una velocidad media de 4ms. Y la mejor de 1ms.
 
-Se ha deplegado el proyecto en la nube, concretamente en Azure, siguiendo este [tutorial](https://docs.microsoft.com/es-es/azure/app-service/tutorial-multi-container-app)
+Se ha deplegado el proyecto en la nube, concretamente en Azure, siguiendo este [tutorial](https://docs.microsoft.com/es-es/azure/app-service/quickstart-multi-container)
 
 ![](../img/azure.png)
 
-Esta es la captura de pantalla de la configuración final, después de seguir la guía anterior.
+Esta es la captura de pantalla de la configuración final, después de seguir la guía anterior y [aquí](http://dailyreport2.azurewebsites.net/dailyreport/animal) se puede comprobar cómo funciona.
 
 Por último, se ha completado la última Historia de Usuario, [exportación de todos los reportes de los cuidadores a un pdf](https://github.com/Guillergood/DailyReport-2.0/issues/15).
 Se añadió el siguiente test a pasar, utilizando la metodología TDD (Red, Green, Refactor).
