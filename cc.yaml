@@ -4,7 +4,6 @@ test:
   - src/test/java/com/gbv/dailyreport/AnimalControllerTest.java
   - src/test/java/com/gbv/dailyreport/ReportControllerTest.java
   - src/test/java/com/gbv/dailyreport/CuidadorControllerTest.java
-  - src/test/java/com/gbv/dailyreport/DailyreportApplicationTest.java
   
 fichero_tareas: build.gradle
 
