@@ -14,16 +14,17 @@
 
 
 
-# Contenedores y automatización de registros
+# Composición de servicios
 
+ [Documentación del fichero de composición.](https://guillergood.github.io/DailyReport-2.0/docs/Composici%C3%B3n.html)
 
- [Documentación sobre elección del framework para microservicio.](https://guillergood.github.io/DailyReport-2.0/docs/Elecci%C3%B3n%20de%20marco%20de%20trabajo%20elegido%20para%20el%20microservicio.html)
+ [Documentación y justificación de la estructura del clúster.](https://guillergood.github.io/DailyReport-2.0/docs/Cluster.html)
 
- [Documentación sobre la API y tests.](https://guillergood.github.io/DailyReport-2.0/docs/Dise%C3%B1o%20en%20general%20del%20API.html)
+ [Documentación y justificación de la configuración de cada uno de los contenedores que lo componen.](https://guillergood.github.io/DailyReport-2.0/docs/Contenedores.html)
 
- [Documentación sobre Configuración distribuida y Logs.](https://guillergood.github.io/DailyReport-2.0/docs/Configuraci%C3%B3n%20distribuida%20y%20logs.html)
+ [Prueba del sistema.](https://guillergood.github.io/DailyReport-2.0/docs/Testeo.html)
 
- [Avances](https://guillergood.github.io/DailyReport-2.0/docs/Avance.html)
+ [Despliegue del proyecto, rendimiento y grado de finalización del proyecto.](https://guillergood.github.io/DailyReport-2.0/docs/Avance.html)
   
 # Página del proyecto
 
