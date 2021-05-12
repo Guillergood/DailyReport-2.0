@@ -2,9 +2,9 @@
 
 DailyReport-2.0 emerges the need to update a volunteer project I carried out for Dublin Zoo in 2019, DailyReport  (work is currently under way to put it in a public repository).
 
-This project helps zoo workers because they need to keep a series of daily animal health reports, contained in section 9 of Irish ISMZP In 2016 and in turn listed in section 2.6 of the European Directive on Good Zoo Practices.
+This project helps zoo workers in their need to keep a series of daily animal health reports, contained in section 9 of Irish ISMZP In 2016 and in turn listed in section 2.6 of the European Directive on Good Zoo Practices.
 
-Previously, the zoo generated a significant expenditure of resources to generate daily reports. With this tool you can report directly with any device (mobile, tablet,computer) and be collected on the zoo server and then generate a document with all the annotations.
+Previously, the zoo consumed a significant expenditure of resources to generate daily reports. With this tool they can report directly with any device (mobile, tablet,computer) and be collected on the zoo server and therefore generate a document with all the annotations.
 
 The main objectives of this tool are:
 
