@@ -1,6 +1,6 @@
 # DailyReport-2.0
 
-DailyReport-2.0 emerges the need to update a volunteer project I carried out for Dublin Zoo in 2019, DailyReport  (work is currently under way to put it in a public repository).
+DailyReport-2.0 emerges the need to update a volunteer project I carried out for Dublin Zoo in 2019.
 
 This project helps zoo workers in their need to keep a series of daily animal health reports, contained in section 9 of Irish ISMZP In 2016 and in turn listed in section 2.6 of the European Directive on Good Zoo Practices.
 
